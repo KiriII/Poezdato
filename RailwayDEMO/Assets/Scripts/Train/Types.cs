@@ -1,6 +1,6 @@
 ﻿namespace train
 {
-	enum Types
+	public enum Types
 	{
 		Default,
 		Lokomativ,

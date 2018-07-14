@@ -8,7 +8,8 @@ namespace train
     public class Train : MonoBehaviour {
 
         public string Name = "Basic train";
-        public int ID = 0;    
+        public int ID = 0;   
+        public Types type; 
         [Range(1, 300)]
         public float MaxSpeed = 120;
         public GameObject destination;
@@ -28,8 +29,7 @@ namespace train
                 isArrived = _isArrived;
             }
         }
-        private State state;
-        private Types type;
+        private State state;        
 
 
         private void Start()
