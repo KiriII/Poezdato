@@ -4,15 +4,19 @@ using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour {
 
-    public GameObject detect;    
+    public bool withOutline = true;    
     public Image description;
     public Text text;
     public string descriptionText = "Do not forget to add description";
 
     private bool isFocused;
     private GameObject defaultDescription;
+    
+    private Outline outline;
+    private float outlineBoost;
+    private Color outlineDefaultColor;
+    private Color outlineInteractColor;
 
-	//TODO outline
 
     private void Awake()
     {
@@ -25,8 +29,27 @@ public class Interactable : MonoBehaviour {
             if (text == null)
                 text = defaultDescription.transform.GetChild(0).GetComponent<Text>();
         }
+        if (withOutline)
+        {
+            outline = GetComponent<Outline>();
+            if (outline == null)
+                SetOutline();
 
+            outline.enabled = false;
+            outlineBoost = 1.2f;
+            outlineDefaultColor = outline.OutlineColor;
+            outlineInteractColor = Color.red;
+        }        
 		isFocused = false;
+    }
+
+    private void SetOutline()
+    {
+        gameObject.AddComponent<Outline>();
+        outline = GetComponent<Outline>();
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
+        outline.OutlineColor = Color.cyan;
+        outline.OutlineWidth = 5f;
     }
 
     public virtual void Interact()
@@ -38,46 +61,43 @@ public class Interactable : MonoBehaviour {
     {
     }
 
+    private void OnMouseDown() 
+    {
+        if (withOutline)
+        {
+            outline.OutlineColor = outlineInteractColor;
+            outline.OutlineWidth *= outlineBoost;
+        }
+    }
+
     private void OnMouseUp() 
 	{
+        if (withOutline)
+        {
+            outline.OutlineColor = outlineDefaultColor;
+            outline.OutlineWidth /= outlineBoost;
+        }
 		if (isFocused)
 		{
 			Interact();
-		}		
+		}        		
 	}
     
     void OnMouseEnter()
-    {
-        if (detect != null)
-        {
-            try
-            {				
-                detect.GetComponent<MeshRenderer>().enabled = true;
-            }catch(MissingComponentException e)
-            {
-                Debug.Log("No MeshRenderer");
-            }
-            description.enabled = true;
-            SetText();
-        }
+    {        
+        if (withOutline)
+            outline.enabled = true;
+        description.enabled = true;
+        SetText();        
 		isFocused = true;
     }
 
     private void OnMouseExit()
-    {
-        if (detect != null)
-        {
-            try
-            {
-                detect.GetComponent<MeshRenderer>().enabled = false;
-            }
-            catch (MissingComponentException e)
-            {
-                Debug.Log("No MeshRenderer");
-            }
-            description.enabled = false;
-            RemoveText();
-        }
+    {      
+        if (withOutline)
+            outline.enabled = false;  
+        description.enabled = false;
+        RemoveText();        
 		isFocused = false;
     }
 

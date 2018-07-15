@@ -38,7 +38,6 @@ namespace train
             type = Types.Default;
             
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
-            // eventHandler
         }
 
         void OnDisable()
