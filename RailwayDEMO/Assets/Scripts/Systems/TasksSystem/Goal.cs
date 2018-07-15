@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Goal  {
 
-    public Task Task { get; set; }
-    public string Description { get; set; }
-    public bool Completed { get; set; }
-    public int CurrentAmount { get; set; }
-    public int RequiredAmount { get; set; }
+    public Task Task { get; set; }              // task with this goal
+    public string Description { get; set; }     // description of the goal
+    public bool Completed { get; set; }         // state
+    public int CurrentAmount { get; set; }      // number of completed iterations
+    public int RequiredAmount { get; set; }     // number of required iterations
 
-    private bool initialized = false;
+    private bool initialized = false;           // init check
     public bool Initialized
     {
         get
@@ -29,7 +29,7 @@ public class Goal  {
         // default initialize stuff
     }
 
-    public void Evaluate()
+    public void Evaluate()   // completion check
     {
         if (CurrentAmount >= RequiredAmount)
         {
@@ -37,10 +37,10 @@ public class Goal  {
         }
     }
 
-    public virtual void Complete()
+    public virtual void Complete()  // OnComplete actions
     {
         Task.CheckGoals();
-        if (!Task.Completed)
+        if (!Task.Completed)    // if there's more goals in the task -> activate next goal
             Task.ActivateNextGoal();
 
         Completed = true;

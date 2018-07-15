@@ -7,7 +7,6 @@ using System.Linq;
 public class TaskSystem : MonoBehaviour {
 
 	#region Singleton
-
     public static TaskSystem Instance;
 
     private void Awake()
@@ -19,25 +18,24 @@ public class TaskSystem : MonoBehaviour {
         }
         Instance = this;
     }
-
     #endregion
 	
 	[HideInInspector]
-    public List<Task> Tasks { get; set; }
+    public List<Task> Tasks { get; set; }   // List of tasks to complete
 	[HideInInspector]
-    public bool AllCompleted { get; set; }
+    public bool AllCompleted { get; set; }  // state
 	
     [HideInInspector]
-    public Task currentTask;
+    public Task currentTask;                // current active task
 	[Tooltip("Text field for task description")]
-	public Text currentTaskText;
+	public Text currentTaskText;            // UI text for current active tasks
 	
 	
     private void Start()
     {       
-		Tasks = GetComponents<Task>().ToList();
+		Tasks = GetComponents<Task>().ToList(); // List of available tasks
 		TurnOffAllTasks();
-        ActivateTask(0);			
+        ActivateTask(0);			            // first task activation
     }
 
     public void ActivateTask(int index)
@@ -67,7 +65,7 @@ public class TaskSystem : MonoBehaviour {
 		TurnOnOffAllTasks(false);
 	}
 
-    public void CheckTasks()
+    public void CheckTasks()    // completion check
     {
         AllCompleted = Tasks.All(g => g.Completed);
         if (AllCompleted)
@@ -76,7 +74,7 @@ public class TaskSystem : MonoBehaviour {
         }
     }
 
-    private void Done()
+    private void Done()         // OnComplete actions
     {
         // Result
         currentTaskText.text = "All tasks are done!";

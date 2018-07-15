@@ -5,19 +5,19 @@ using System.Linq;
 
 public class Task : MonoBehaviour {
 
-    public List<Goal> Goals { get; set; }
-    public string QuestName { get; set; }
-    public string Description { get; set; }
-    public bool Completed { get; set; }
-    public int GoalIndex { get; set; } 
+    public List<Goal> Goals { get; set; }       // List of goals to complete
+    public string TaskName { get; set; }        // Task name
+    public string Description { get; set; }     // Task description
+    public bool Completed { get; set; }         // state
+    public int GoalIndex { get; set; }          // Index of current goal
 
     private void Start()
     {
-        Goals = new List<Goal>();
-        GoalIndex = 0;
+        Goals = new List<Goal>();   // list init
+        GoalIndex = 0;              // first goal index
     }
 
-    public void CheckGoals()
+    public void CheckGoals()        // completion check
     {        
         Completed = Goals.All(g => g.Completed);
         if (Completed)
@@ -46,7 +46,7 @@ public class Task : MonoBehaviour {
         Goals.ForEach(g => g.Init());
     }
 
-    public virtual void Done()
+    public virtual void Done()  // OnComplete actions
     {			
         TaskSystem.Instance.CheckTasks();
 		

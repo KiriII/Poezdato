@@ -2,28 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventHandler : MonoBehaviour {
+public class TrainHandler : MonoBehaviour {
 
-	public delegate void TimeScaleHandler(bool isStopped);
-    public static event TimeScaleHandler OnTimeScaleChanged;
-
-    public delegate void DestinationHandler(GameObject destination);
+	// Destination control
+	public delegate void DestinationHandler(GameObject destination);
     public static event DestinationHandler OnDestinationChanged;
 
+	// Movement events
     public delegate void MovementHandler(GameObject self);
     public static event MovementHandler OnDeparture;
     public static event MovementHandler OnArrival;
     public static event MovementHandler OnStop;
 
-    public delegate void TriggerEnterHandler(string triggerID);
-    public static event TriggerEnterHandler OnTriggerEnter;
-
-	public static void TimeScaleChanged(float timeScale)
-    {
-        OnTimeScaleChanged?.Invoke(timeScale == 0);
-    }
-
-    public static void DestinationChanged(GameObject destination)
+	
+	public static void DestinationChanged(GameObject destination)
     {
         OnDestinationChanged?.Invoke(destination);
     }
@@ -41,11 +33,5 @@ public class EventHandler : MonoBehaviour {
     public static void Stop(GameObject self)
     {
         OnStop?.Invoke(self);
-    }
-
-    public static void TriggerEnter(string triggerID)
-    {
-        if (OnTriggerEnter != null)
-            OnTriggerEnter(triggerID);
     }
 }

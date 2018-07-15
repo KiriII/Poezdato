@@ -5,18 +5,30 @@ using UnityEngine;
 
 namespace train
 {
+    // Base train class to control characteristics and states 
     public class Train : MonoBehaviour {
 
+        [Tooltip("Train name")]
         public string Name = "Basic train";
-        public int ID = 0;   
-        public Types type; 
-        [Range(1, 300)]
+
+        [Tooltip("Train special identificator")]
+        public int ID = 0;
+
+        [Tooltip("Train carriage type")]
+        public Types type;
+
+        [Tooltip("Max possible train speed")]
+        [Range(1, 300)]        
         public float MaxSpeed = 120;
+
+        [Tooltip("Last destination")]
         public GameObject destination;
+
+        [Tooltip("Description of the train")]
         public string Info = "Some super interesting information";
 
         private float CurrentSpeed;
-        private struct State
+        private struct State 
         {
             public bool isReady;
             public bool isStopped;
@@ -29,19 +41,20 @@ namespace train
                 isArrived = _isArrived;
             }
         }
-        private State state;        
+        private State state;  // struct with train current state  
 
 
         private void Start()
         {
-            state = new State(false, true, false);
-            type = Types.Default;
+            state = new State(false, true, false); // train state init
             
+            // method subscription to time management 
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
         }
 
         void OnDisable()
         {
+            // methods deletion from events
             EventHandler.OnTimeScaleChanged -= CheckTimeScale;
             // eventHandler
         }
@@ -53,8 +66,8 @@ namespace train
 
         public void SetNewDestination(GameObject newDest)
         {
-            destination = newDest;
-            EventHandler.DestinationChanged(newDest);
+            destination = newDest;                      // new destination setup
+            TrainHandler.DestinationChanged(newDest);   // new destination event
         }
 
         public void Departure()
@@ -62,7 +75,7 @@ namespace train
             if (state.isReady)
             {
                 state.isStopped = false;
-                EventHandler.Departure(gameObject);
+                TrainHandler.Departure(gameObject);     // departure event
             }       
         }
 
@@ -70,14 +83,16 @@ namespace train
         {
             state.isStopped = true;
             state.isArrived = true;
-            EventHandler.Arrival(gameObject);
+            TrainHandler.Arrival(gameObject);           // arrival event
         }
 
         public void Stop(){
             state.isStopped = true;
-            EventHandler.Stop(gameObject);
+            TrainHandler.Stop(gameObject);              // stop event
         }
 
+
+        //---Getters and setters--- 
         public bool IsReady(){
             return state.isReady;
         }

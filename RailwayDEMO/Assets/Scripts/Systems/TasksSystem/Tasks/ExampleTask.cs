@@ -10,7 +10,7 @@ public class ExampleTask : Task {
     {
 		// main settings
         Debug.Log("ExampleTask!");
-        QuestName = "ExampleTask";
+        TaskName = "ExampleTask";
         Description = "Try to understand example task";
         // help settings..
 
