@@ -15,6 +15,9 @@ public class EventHandler : MonoBehaviour {
     public static event MovementHandler OnArrival;
     public static event MovementHandler OnStop;
 
+    public delegate void TriggerEnterHandler(string triggerID);
+    public static event TriggerEnterHandler OnTriggerEnter;
+
 	public static void TimeScaleChanged(float timeScale)
     {
         OnTimeScaleChanged?.Invoke(timeScale == 0);
@@ -38,5 +41,11 @@ public class EventHandler : MonoBehaviour {
     public static void Stop(GameObject self)
     {
         OnStop?.Invoke(self);
+    }
+
+    public static void TriggerEnter(string triggerID)
+    {
+        if (OnTriggerEnter != null)
+            OnTriggerEnter(triggerID);
     }
 }
