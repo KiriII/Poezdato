@@ -56,10 +56,20 @@ public class CameraMove : MonoBehaviour {
         if (!createPoezd)
         {
             yaw += rotSpeed * Input.GetAxis("Mouse X");
-            pitch -= rotSpeed * Input.GetAxis("Mouse Y");
+            if ((pitch <= 90) && (pitch >= -90)) pitch -= rotSpeed * Input.GetAxis("Mouse Y");
+            else if (pitch < 0) pitch = -90;
+            else pitch = 90;
             transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
         }
         else transform.position += inpX * transform.right * moveSpeed * Time.deltaTime;
+    }
+
+    public void StartCreating(int createPoint) //  массив уже задан
+    {
+        createPoezd = true;
+        place = -1;
+        transform.rotation = createPlaces[createPoint].rotation;
+        transform.position = createPlaces[createPoint].position;
     }
 
 }
