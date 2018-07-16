@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour {
             outline.enabled = false;
             outlineBoost = 1.2f;
             outlineDefaultColor = outline.OutlineColor;
-            outlineInteractColor = Color.red;
+            outlineInteractColor = Color.magenta;
         }        
 		isFocused = false;
     }
