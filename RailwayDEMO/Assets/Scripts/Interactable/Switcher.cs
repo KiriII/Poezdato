@@ -6,7 +6,7 @@ namespace interactableObj {
 	public class Switcher : Interactable {
 		private Animator anim;
 		private TurnState switcherState;
-
+		
 		private void Start() 
 		{
 			anim = GetComponent<Animator>();
@@ -15,18 +15,16 @@ namespace interactableObj {
 
 		public override void Interact()
 		{
-			if (!isStopped) {
-				base.Interact();
-				if (switcherState == TurnState.LEFT)
-				{
-					TurnRight();
-				}       		
-				else 
-				{			
-					TurnLeft();
-				}
-				// 	
-			}		
+			base.Interact();
+			if (switcherState == TurnState.LEFT)
+			{
+				TurnRight();
+			}       		
+			else 
+			{			
+				TurnLeft();
+			}
+			// 			
 		}
 
 		private void TurnRight()
