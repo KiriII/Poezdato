@@ -9,8 +9,8 @@ public class OnLineMotion : MonoBehaviour {
     public float speed;
     public Map map;
 
-    private Map.Vertex nextVert;
-    private Map.Vertex prevVert;
+    private Vertex nextVert;
+    private Vertex prevVert;
     private float leftDistance = 0;
 
     private Rigidbody rb;
@@ -30,10 +30,13 @@ public class OnLineMotion : MonoBehaviour {
                 map.AddVertex(positions[0]);
                 for (int i = 1; i < positions.Length; i++) {
                     map.AddVertex(positions[i]);
-                    map[i - 1].addPath(map[i]);
+                    if (i != 3 && i != 2)
+                        map[i - 1].addPath(map[i]);
                     //Пример развязки
                     if (i == 4) {
-                        map[2] = new Map.Cloverleaf(positions[i], map[1], map[3], map[4]);
+                        map[2] = new Cloverleaf(positions[2], map[1], map[3], map[4]);
+                        map[1].addPath(map[2]);
+                        map[2].addPath(map[3]);
                     }
                 }
                 map[map.vertexes.Count - 1].addPath(map[0]);
@@ -51,13 +54,18 @@ public class OnLineMotion : MonoBehaviour {
         if (nextVert != null || leftDistance > 0) {
             if (leftDistance <= 0) {
                 if (nextVert.hasNext(prevVert)) {
-                    Map.Vertex tmp = nextVert;
-                    nextVert = nextVert.nextVert(prevVert);
+                    Vertex tmp = nextVert;
+                    if (nextVert is Cloverleaf)
+                        nextVert = (nextVert as Cloverleaf).nextVert(prevVert);
+                    else
+                        nextVert = nextVert.nextVert(prevVert);
                     prevVert = tmp;
-                    if (prevVert is Map.Cloverleaf) {
-                        Map.Cloverleaf c = (Map.Cloverleaf)prevVert;
-                        c.Switch();
-                    }   
+                    if (prevVert is Cloverleaf) {
+                        Cloverleaf c = (Cloverleaf)prevVert;
+                        Debug.Log(c.nextVert().position);
+                        Debug.Log(c.Switch());
+                        Debug.Log(c.nextVert().position);
+                    }
                     NextVertex(nextVert);
                 }
             }
@@ -69,7 +77,7 @@ public class OnLineMotion : MonoBehaviour {
 
 	}
 
-    void NextVertex(Map.Vertex vertex) {
+    void NextVertex(Vertex vertex) {
         if (vertex == null) {
             this.rb.velocity = Vector3.zero;
             GetComponent<Train>().Stop();
