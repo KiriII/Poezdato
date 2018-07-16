@@ -18,17 +18,19 @@ namespace interactableObj {
 
 		public override void Interact()
 		{
-			base.Interact();
+			if (!isStopped) {
+				base.Interact();
 
-			if (currentLight == LightState.GREEN)
-			{
-				SetRedLight();
-			}       		
-			else 
-			{			
-				SetGreenLight();
+				if (currentLight == LightState.GREEN)
+				{
+					SetRedLight();
+				}       		
+				else 
+				{			
+					SetGreenLight();
+				}
+				//
 			}
-			//
 		}
 
 		private void SetRedLight()

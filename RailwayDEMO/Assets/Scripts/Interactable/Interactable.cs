@@ -10,6 +10,8 @@ public class Interactable : MonoBehaviour {
     public string descriptionText = "Do not forget to add description";
 
     private bool isFocused;
+    [HideInInspector]
+    public bool isStopped;
     private GameObject defaultDescription;
     
     private Outline outline;
@@ -41,6 +43,20 @@ public class Interactable : MonoBehaviour {
             outlineInteractColor = Color.magenta;
         }        
 		isFocused = false;
+        isStopped = false;
+        EventHandler.OnTimeScaleChanged += CheckTimeScale; 
+        
+    }
+
+    void OnDisable() 
+    { 
+        // method deletion from events 
+        EventHandler.OnTimeScaleChanged -= CheckTimeScale; 
+    }
+
+    public void CheckTimeScale(bool stop) 
+    { 
+        isStopped = stop; 
     }
 
     private void SetOutline()
@@ -63,7 +79,7 @@ public class Interactable : MonoBehaviour {
 
     private void OnMouseDown() 
     {
-        if (withOutline)
+        if (withOutline && !isStopped)
         {
             outline.OutlineColor = outlineInteractColor;
             outline.OutlineWidth *= outlineBoost;
@@ -72,33 +88,37 @@ public class Interactable : MonoBehaviour {
 
     private void OnMouseUp() 
 	{
-        if (withOutline)
+        if (withOutline && !isStopped)
         {
             outline.OutlineColor = outlineDefaultColor;
             outline.OutlineWidth /= outlineBoost;
         }
-		if (isFocused)
+		if (isFocused && !isStopped)
 		{
 			Interact();
 		}        		
 	}
     
     void OnMouseEnter()
-    {        
+    {   
+        if (!isStopped)    {
         if (withOutline)
             outline.enabled = true;
         description.enabled = true;
         SetText();        
 		isFocused = true;
+        }
     }
 
     private void OnMouseExit()
     {      
+        if (!isStopped) {
         if (withOutline)
             outline.enabled = false;  
         description.enabled = false;
         RemoveText();        
 		isFocused = false;
+        }
     }
 
     public virtual void SetText()

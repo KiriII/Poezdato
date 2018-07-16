@@ -15,16 +15,18 @@ namespace interactableObj {
 
 		public override void Interact()
 		{
-			base.Interact();
-			if (switcherState == TurnState.LEFT)
-			{
-				TurnRight();
-			}       		
-			else 
-			{			
-				TurnLeft();
-			}
-			// 			
+			if (!isStopped) {
+				base.Interact();
+				if (switcherState == TurnState.LEFT)
+				{
+					TurnRight();
+				}       		
+				else 
+				{			
+					TurnLeft();
+				}
+				// 	
+			}		
 		}
 
 		private void TurnRight()
