@@ -43,7 +43,7 @@ public class ChoseSostaw : Interactable
         {
             if (CreatingSystem.deleted) 
             {
-                current = CreatingSystem.firstSostaw.transform.position.x - width - // локоматив
+                current = CreatingSystem.firstSostaw.transform.position.x - width - range - // локоматив
                      (CreatingSystem.deletedNumber - 1 ) * (width + range );
                 currentWagon.transform.position = new Vector3(current , CreatingSystem.firstSostaw.transform.position.y , CreatingSystem.firstSostaw.transform.position.z);
                 CreatingSystem.Wagoni[CreatingSystem.deletedNumber] = currentWagon;

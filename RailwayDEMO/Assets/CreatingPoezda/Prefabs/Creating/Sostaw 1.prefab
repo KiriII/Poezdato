@@ -8925,7 +8925,7 @@ MonoBehaviour:
   text: {fileID: 0}
   descriptionText: Create this
   isStopped: 0
-  onRoad: {fileID: 1864055447156770, guid: b550ef85d167148429822ae2aec90576, type: 2}
+  onRoad: {fileID: 1693279765220638, guid: af09bce2cee4cd347a4c31629d7f2970, type: 2}
   CreatingSystem: {fileID: 0}
   isLoko: 0
   currentPosition: {fileID: 0}

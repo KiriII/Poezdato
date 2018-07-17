@@ -13545,6 +13545,7 @@ MonoBehaviour:
   type: 1
   MaxSpeed: 120
   destination: {fileID: 0}
+  Info: Some super interesting information
 --- !u!114 &114546338449370716
 MonoBehaviour:
   m_ObjectHideFlags: 1
