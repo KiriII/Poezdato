@@ -1,41 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using mapping;
+using interactableObj;
 
 public class Vertex : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-		 
+
+    public Vector3[] positionArr;
+    public TrafficLight TrafficLight;
+    public Vertex from;
+    public Vertex to;
+
+
+    void Start () {
+        for (int i = 0; i < positionArr.Length; i++)
+            positionArr[i] = this.transform.position + positionArr[i];
 	}
-    public Vector3 position { set { } get { return pos; } }
-    private Vector3 pos;
-    protected List<Path> pathes;
-    public bool stop {
-        get {
-            return stop;
-        }
-        set {
-            stop = value;
-        }
-    }
-
-    public Vertex(Vector3 position) {
-        pathes = new List<Path>();
-        this.pos = position;
-    }
-
-    public void addPath(Vertex to) {
-        this.pathes.Add(new Path(this, to));
-        to.pathes.Add(new Path(to, this));
-    }
 
     public Vertex nextVert(Vertex from) {
-        return pathes.Find(p => (p.to != from)).to;
+        if (from == null)
+            return nextVert();
+        return (this.from != null && from.gameObject == this.from.gameObject) ? this.to : this.from; //
     }
     public Vertex nextVert() {
-        return pathes.Find(p => p.from == this).to;
+        return (to == null) ? from : to; //
     }
 
     public bool hasNext(Vertex from) {
@@ -43,5 +32,22 @@ public class Vertex : MonoBehaviour {
     }
     public bool hasNext() {
         return nextVert() != null;
+    }
+
+    public Vector3[] getMovePoints(Vertex from) {
+        if (from == null || from.gameObject == this.from.gameObject)
+            return positionArr;
+        return Reversed(positionArr);
+    }
+
+    public bool isStopLight() {
+        return (this.TrafficLight != null) ? this.TrafficLight.currentLight == LightState.RED : false;
+    }
+    protected Vector3[] Reversed(Vector3[] arr) {
+        Vector3[] newArr = new Vector3[arr.Length];
+        for (int i = 0; i < arr.Length; i++) {
+            newArr[i] = arr[(arr.Length - 1) - i];
+        }
+        return newArr;
     }
 }

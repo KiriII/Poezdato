@@ -9,7 +9,7 @@ namespace interactableObj {
 		public Light greenLight;
 		public Light redLight;
 
-		private LightState currentLight;
+		public LightState currentLight;
 
 		private void Start() 
 		{
@@ -48,7 +48,7 @@ namespace interactableObj {
 		}
 	}
 
-	enum LightState
+	public enum LightState
 	{
 		GREEN,
 		RED	

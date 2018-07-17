@@ -5,12 +5,12 @@ using UnityEngine;
 namespace interactableObj {
 	public class Switcher : Interactable {
 		private Animator anim;
-		private TurnState switcherState;
+		public TurnState switcherState;
 		
 		private void Start() 
 		{
 			anim = GetComponent<Animator>();
-			switcherState = TurnState.LEFT;
+			switcherState = TurnState.RIGHT;
 		}
 
 		public override void Interact()
@@ -40,7 +40,7 @@ namespace interactableObj {
 		}
 	}
 
-	enum TurnState
+	public enum TurnState
 	{
 		LEFT,
 		RIGHT	

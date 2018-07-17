@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using train;
-using mapping;
 
 public class OnLineMotion : MonoBehaviour {
-    public GameObject line; //GameObject with a LineRendered
+    public GameObject dest; //GameObject with a LineRendered
     public float speed;
-    public Map map;
 
     private Vertex nextVert;
     private Vertex prevVert;
+    private Queue<Vector3> pointList;
     private float leftDistance = 0;
 
     private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-        LineRenderer renderer = line.GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
+        nextVert = dest.GetComponent<Vertex>();
+        pointList = new Queue<Vector3>(nextVert.getMovePoints(null));
+        prevVert = null;
+        NextVertex(nextVert);
+        //nextVert = dest.GetComponent<Vertex>().nextVert();
+        /*
+        LineRenderer renderer = line.GetComponent<LineRenderer>();
+        
         if (renderer == null)
             Debug.LogWarningFormat("Param [line] for GameObject {0} has no LineRenderer");
         else {   
@@ -47,26 +53,30 @@ public class OnLineMotion : MonoBehaviour {
                 NextVertex(nextVert);
             }
         }
+         * */
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (nextVert != null || leftDistance > 0) {
             if (leftDistance <= 0) {
-                if (nextVert.hasNext(prevVert)) {
-                    Vertex tmp = nextVert;
-                    if (nextVert is Cloverleaf)
-                        nextVert = (nextVert as Cloverleaf).nextVert(prevVert);
-                    else
-                        nextVert = nextVert.nextVert(prevVert);
-                    prevVert = tmp;
-                    if (prevVert is Cloverleaf) {
-                        Cloverleaf c = (Cloverleaf)prevVert;
-                        Debug.Log(c.nextVert().position);
-                        Debug.Log(c.Switch());
-                        Debug.Log(c.nextVert().position);
+                if (pointList.Count == 0) {
+                    if (nextVert != null && !nextVert.isStopLight()) {
+                        Vertex tmp = nextVert;
+                        if (nextVert is Cloverleaf) {
+                            Cloverleaf c = nextVert as Cloverleaf;
+                            nextVert = nextVert.GetComponent<Cloverleaf>().nextVert(prevVert);
+                        } else {
+                            nextVert = nextVert.nextVert(prevVert);
+                        }
+                        prevVert = tmp;
+                        NextVertex(nextVert);
+                    } else {
+                        this.rb.velocity = Vector3.zero;
+                        GetComponent<Train>().Stop();
                     }
-                    NextVertex(nextVert);
+                } else {
+                    NextPoint();
                 }
             }
             leftDistance -= Vector3.Magnitude(rb.velocity) * Time.deltaTime;
@@ -81,11 +91,21 @@ public class OnLineMotion : MonoBehaviour {
         if (vertex == null) {
             this.rb.velocity = Vector3.zero;
             GetComponent<Train>().Stop();
+        } else {
+            if (vertex is Cloverleaf)
+                pointList = new Queue<Vector3>((vertex as Cloverleaf).getMovePoints(prevVert));
+            else
+                pointList = new Queue<Vector3>(vertex.getMovePoints(prevVert));
+            NextPoint();
         }
-        this.transform.LookAt(vertex.position);
-        this.leftDistance = Vector3.Magnitude(vertex.position - this.transform.position);
-        rb.velocity = Vector3.ClampMagnitude(vertex.position - this.transform.position, speed);
-        if (rb.velocity.magnitude < speed) 
+    }
+    void NextPoint() {
+        Vector3 point = pointList.Dequeue();
+        Debug.Log(point);
+        this.transform.LookAt(point);
+        this.leftDistance = Vector3.Magnitude(point - this.transform.position);
+        rb.velocity = Vector3.ClampMagnitude(point - this.transform.position, speed);
+        if (rb.velocity.magnitude < speed)
             rb.velocity = rb.velocity * (speed / rb.velocity.magnitude);
     }
 }
