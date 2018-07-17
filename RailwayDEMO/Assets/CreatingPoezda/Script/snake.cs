@@ -9,7 +9,8 @@ public class snake : MonoBehaviour {
     public Transform back;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
         back.transform.position = new Vector3(transform.position.x - transform.localScale.z / 2, transform.position.y , transform.position.z );
 	}
 

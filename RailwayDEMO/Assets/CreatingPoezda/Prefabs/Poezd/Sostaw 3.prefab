@@ -1219,7 +1219,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639541474411790}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 626.2264, y: 18.48, z: 200.99358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1228,7 +1228,7 @@ Transform:
   - {fileID: 4164403954123400}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4085313892023000
 Transform:
   m_ObjectHideFlags: 1
@@ -11755,6 +11755,7 @@ MonoBehaviour:
   type: 2
   MaxSpeed: 120
   destination: {fileID: 0}
+  Info: Some super interesting information
 --- !u!114 &114431903317825666
 MonoBehaviour:
   m_ObjectHideFlags: 1

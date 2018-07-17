@@ -142,6 +142,7 @@ public class CreatingSystem : MonoBehaviour {
         {
             GameObject.Destroy(choseble[i]);
         }
+        TrainHandler.Departure();     // departure event
     } 
 
     public void StartCreating(GameObject startPoint , int createPointNumber) //задать точку начала построения поезда и номер пункта строительства

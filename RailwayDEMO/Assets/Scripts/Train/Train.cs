@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace train
@@ -24,10 +25,11 @@ namespace train
         [Tooltip("Last destination")]
         public GameObject destination;
 
-        //[Tooltip("Description of the train")]
-        //public string Info = "Some super interesting information";
+        [Tooltip("Description of the train")]
+        public string Info = "Some super interesting information";
 
         private float CurrentSpeed;
+
         private struct State 
         {
             public bool isReady;
@@ -42,20 +44,25 @@ namespace train
             }
         }
         private State state;  // struct with train current state  
-
+        private Interactable interComponent;
+        private CreatingSystem cS;
 
         private void Start()
         {
             state = new State(false, true, false); // train state init
-            //descriptionText = Info;
+            interComponent = GetComponent<DeleteWagon>();
+            cS = FindObjectOfType<CreatingSystem>();
+            
             // method subscription to time management 
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
+            TrainHandler.OnDeparture += Departure;
         }
 
         void OnDisable()
         {
             // methods deletion from events
             EventHandler.OnTimeScaleChanged -= CheckTimeScale;
+            TrainHandler.OnDeparture -= Departure;
             // eventHandler
         }
 
@@ -72,11 +79,11 @@ namespace train
 
         public void Departure()
         {
-            if (state.isReady)
-            {
-                state.isStopped = false;
-                TrainHandler.Departure(gameObject);     // departure event
-            }       
+            state.isStopped = false;
+            Info = type.ToString();              
+            descriptionText = Info;
+            interComponent.descriptionText = Info;
+            cS.Wagoni[0].GetComponent<snake>().speed = MaxSpeed / 10;
         }
 
         public void Arrival()
