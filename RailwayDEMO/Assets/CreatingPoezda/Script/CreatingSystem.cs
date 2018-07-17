@@ -20,6 +20,9 @@ public class CreatingSystem : MonoBehaviour {
     public bool deleted;
     public int deletedNumber;
 
+    public float range;
+    public float width;
+
     // Use this for initialization
     void Start() {
         cameraMove = FindObjectOfType<CameraMove>();
@@ -131,6 +134,10 @@ public class CreatingSystem : MonoBehaviour {
     {
         cameraMove.place = 0;
         cameraMove.createPoezd = false;
+        for (int i = 0; i < Wagoni.Count; i++)
+        {
+            Wagoni[i].GetComponent<DeleteWagon>().canDelete = false;
+        }
         for (int i = 0; i < choseble.Length; i++)
         {
             GameObject.Destroy(choseble[i]);
@@ -139,6 +146,10 @@ public class CreatingSystem : MonoBehaviour {
 
     public void StartCreating(GameObject startPoint , int createPointNumber) //задать точку начала построения поезда и номер пункта строительства
     {
+        for (int i = 0; i < Wagoni.Count; i++)
+        {
+            Wagoni[i].GetComponent<DeleteWagon>().canDelete = true;
+        }
         cameraMove.StartCreating(createPointNumber);
         createPoint = startPoint;
         firstSostaw.transform.position = new Vector3(createPoint.transform.position.x, createPoint.transform.position.y, createPoint.transform.position.z);
