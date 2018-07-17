@@ -5,6 +5,7 @@ using UnityEngine;
 namespace interactableObj {
 	public class Switcher : Interactable {
 		private Animator anim;
+		[HideInInspector]
 		public TurnState switcherState;
 		
 		private void Start() 
@@ -27,16 +28,16 @@ namespace interactableObj {
 			// 			
 		}
 
-		private void TurnRight()
+		private void TurnLeft()
 		{		
 			anim.SetInteger("direction", 1);
-			switcherState = TurnState.RIGHT;
+			switcherState = TurnState.LEFT;
 		}
 
-		private void TurnLeft()
+		private void TurnRight()
 		{
 			anim.SetInteger("direction", -1);
-			switcherState = TurnState.LEFT;
+			switcherState = TurnState.RIGHT;
 		}
 	}
 

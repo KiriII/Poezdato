@@ -3,8 +3,9 @@
 	public enum Types
 	{
 		Default,
-		Lokomativ,
-		Gruzovoi,
-		//...
+		MainTrain,
+		Cargo,
+		Fuel,
+		Passanger,
 	}
 }

@@ -12,17 +12,14 @@ public class PauseMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-			if (!OptionsMenu.activeSelf) 
+		if (Input.GetKeyDown(KeyCode.Escape) && !OptionsMenu.activeSelf)
 		{
+			if(isPaused) 
 			{
-				if(isPaused) 
-				{
-					Resume();
-				} else 
-				{
-					Pause();
-				}
+				Resume();
+			} else 
+			{				
+				Pause();
 			}
 		}
 	}
@@ -32,14 +29,15 @@ public class PauseMenu : MonoBehaviour {
 		PauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;
 		isPaused = false;
+		EventHandler.TimeScaleChanged(Time.timeScale);
 	}
 	
 	void Pause() 
-	{
-		EventHandler.TimeScaleChanged(Time.timeScale);
+	{		
 		PauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
 		isPaused = true;
+		EventHandler.TimeScaleChanged(Time.timeScale);
 	}
 	
 	public void loadOptions()

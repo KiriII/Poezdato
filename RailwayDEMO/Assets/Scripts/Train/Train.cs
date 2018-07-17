@@ -6,7 +6,7 @@ using UnityEngine;
 namespace train
 {
     // Base train class to control characteristics and states 
-    public class Train : MonoBehaviour {
+    public class Train : Interactable {
 
         [Tooltip("Train name")]
         public string Name = "Basic train";
@@ -24,8 +24,8 @@ namespace train
         [Tooltip("Last destination")]
         public GameObject destination;
 
-        [Tooltip("Description of the train")]
-        public string Info = "Some super interesting information";
+        //[Tooltip("Description of the train")]
+        //public string Info = "Some super interesting information";
 
         private float CurrentSpeed;
         private struct State 
@@ -47,7 +47,7 @@ namespace train
         private void Start()
         {
             state = new State(false, true, false); // train state init
-            
+            //descriptionText = Info;
             // method subscription to time management 
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
         }
