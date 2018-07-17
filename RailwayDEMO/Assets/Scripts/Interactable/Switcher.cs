@@ -11,7 +11,7 @@ namespace interactableObj {
 		private void Start() 
 		{
 			anim = GetComponent<Animator>();
-			switcherState = TurnState.RIGHT;
+			switcherState = TurnState.LEFT;
 		}
 
 		public override void Interact()
@@ -30,16 +30,16 @@ namespace interactableObj {
 
 		private void TurnLeft()
 		{		
-			anim.SetInteger("direction", 1);
+			anim.SetInteger("direction", -1);
 			switcherState = TurnState.LEFT;
 		}
 
 		private void TurnRight()
 		{
-			anim.SetInteger("direction", -1);
+			anim.SetInteger("direction", 1);
 			switcherState = TurnState.RIGHT;
 		}
-	}
+	}	
 
 	public enum TurnState
 	{

@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour {
     private Outline outline;
     private float outlineBoost;
     private Color outlineDefaultColor;
-    private Color outlineInteractColor;
+    private Color outlineInteractColor;    
 
 
     private void Awake()

@@ -17,7 +17,6 @@ public class ExampleTask : Task {
 		// list of goals
         Goals = new List<Goal>
         {
-            new DestinationGoal(this, goalPosition.GetComponent<TriggerDestination>().triggerID, "reach destination", false, 0, 1),
             // create goal -> add to quest list of goals
         };
         GoalIndex = 0;

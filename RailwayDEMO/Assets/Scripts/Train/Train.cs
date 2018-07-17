@@ -55,6 +55,7 @@ namespace train
             
             // method subscription to time management 
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
+            EventHandler.OnTriggerEnter +=Stop;
             TrainHandler.OnDeparture += Departure;
         }
 
@@ -62,6 +63,7 @@ namespace train
         {
             // methods deletion from events
             EventHandler.OnTimeScaleChanged -= CheckTimeScale;
+            EventHandler.OnTriggerEnter -=Stop;
             TrainHandler.OnDeparture -= Departure;
             // eventHandler
         }
@@ -84,6 +86,7 @@ namespace train
             descriptionText = Info;
             interComponent.descriptionText = Info;
             cS.Wagoni[0].GetComponent<snake>().speed = MaxSpeed / 10;
+            Debug.Log("Go");
         }
 
         public void Arrival()
@@ -94,8 +97,10 @@ namespace train
         }
 
         public void Stop(){
+            if (isStopped) return;
             state.isStopped = true;
             TrainHandler.Stop(gameObject);              // stop event
+            cS.Wagoni[0].GetComponent<snake>().speed = 0;
         }
 
 

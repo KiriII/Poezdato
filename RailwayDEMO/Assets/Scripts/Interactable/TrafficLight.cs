@@ -28,6 +28,7 @@ namespace interactableObj {
 				else 
 				{			
 					SetGreenLight();
+					TrainHandler.Departure();
 				}
 				//
 			}
@@ -44,8 +45,14 @@ namespace interactableObj {
 		{
 			redLight.enabled = false;
 			greenLight.enabled = true;		
-			currentLight = LightState.GREEN;
-		}
+			currentLight = LightState.GREEN;			
+		}	
+
+		private void OnTriggerEnter(Collider other)
+   		{
+			if (currentLight == LightState.RED)
+       			EventHandler.TriggerEnter();
+    	}
 	}
 
 	public enum LightState

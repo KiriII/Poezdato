@@ -7997,7 +7997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bda08ec7a0aa84f9c4a910e2766b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withOutline: 1
+  withOutline: 0
   description: {fileID: 0}
   text: {fileID: 0}
   descriptionText: Main train

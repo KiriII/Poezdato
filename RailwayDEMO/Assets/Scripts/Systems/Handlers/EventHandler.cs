@@ -9,7 +9,7 @@ public class EventHandler : MonoBehaviour {
     public static event TimeScaleHandler OnTimeScaleChanged;    
 
     // Trigger collision events
-    public delegate void TriggerEnterHandler(string triggerID);
+    public delegate void TriggerEnterHandler();
     public static event TriggerEnterHandler OnTriggerEnter;
 
 	public static void TimeScaleChanged(float timeScale)
@@ -17,9 +17,8 @@ public class EventHandler : MonoBehaviour {
         OnTimeScaleChanged?.Invoke(timeScale == 0);
     }   
 
-    public static void TriggerEnter(string triggerID)
+    public static void TriggerEnter()
     {
-        if (OnTriggerEnter != null)
-            OnTriggerEnter(triggerID);
+        OnTriggerEnter?.Invoke();
     }
 }
