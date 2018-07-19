@@ -4,8 +4,11 @@ using UnityEngine;
 using train;
 
 public class snake : MonoBehaviour {
+
+    //[HideInInspector]
+    //public int numberInTrain;
     
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject> Wagoni = null; // dlya lokomotiva
     public Transform back;
 
@@ -18,9 +21,12 @@ public class snake : MonoBehaviour {
     private List<snake> WagoniSnake;
     private List<Transform> WagoniTransform;
 
+    private bool creating;
+
 	// Use this for initialization
 	void Start () 
     {
+
         back.transform.position = new Vector3(transform.position.x - transform.localScale.z / 2, transform.position.y , transform.position.z );
         it = GetComponent<Train>();
         speed = it.CurrentSpeed;
@@ -41,6 +47,7 @@ public class snake : MonoBehaviour {
     private void Update() 
     {        
         transform.Translate(Vector3.forward * speed * SPEED_K * Time.deltaTime);
+
     }
 
     private void UpdateSpeed(GameObject self)

@@ -11,13 +11,17 @@ public class CreatingSystem : MonoBehaviour {
     public GameObject[] sostawi = new GameObject[5];    // prefabs
     public GameObject[] choseble = new GameObject[5];   // on scene
     public GameObject createPoint;
+    //[HideInInspector]
     public List<GameObject> Wagoni = new List<GameObject>(); // 0 - lokomotiw , 1.. sostawi
-    public bool change; // change lokomotiw and sostaw
-    public bool lokomotiwExist = false;
+    [HideInInspector]
+    public bool lokomotiwExist;
+    [HideInInspector]
     public float current;
+    [HideInInspector]
     public GameObject firstSostaw;  // его место
-
+    [HideInInspector]
     public bool deleted;
+    [HideInInspector]
     public int deletedNumber;
 
     public float range;
@@ -25,6 +29,7 @@ public class CreatingSystem : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        lokomotiwExist = false;
         cameraMove = FindObjectOfType<CameraMove>();
         firstSostaw = new GameObject();
         firstSostaw.transform.position = new Vector3(createPoint.transform.position.x , createPoint.transform.position.y , createPoint.transform.position.z);
@@ -43,83 +48,20 @@ public class CreatingSystem : MonoBehaviour {
         EventHandler.CreatingChanged(true);     // creation start
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (cameraMove.createPoezd)
-        {
-            deleted = false;
-            for (int i = 0; i < Wagoni.Count; i++)
-            {
-                if (Wagoni[i] == null)
-                {
-                    deleted = true;
-                    if (i == 0)
-                    {
-                        if (lokomotiwExist) change = true;
-                    }
-                    else
-                    {
-                        deletedNumber = i;
-                    }
-                }
-            }
-            if (deleted == false)
-            {
-                for (int i = 0; i < Wagoni.Count; i++)
-                {
-
-                    Wagoni[i].GetComponent<DeleteWagon>().canDelete = true;
-                    Wagoni[i].GetComponent<DeleteWagon>().descriptionText = "DELETE THIS";
-                }
-            }
-            else
-            {
-                if ((Wagoni.Count == 20) && (choseble[0] == null))
-                {
-                    if (Wagoni[0] != null) Changing();
-                    Changing();
-                }
-                for (int i = 0; i < Wagoni.Count; i++)
-                {
-                    if (Wagoni[i] != null)
-                    {
-                        Wagoni[i].GetComponent<DeleteWagon>().canDelete = false;
-                        Wagoni[i].GetComponent<DeleteWagon>().descriptionText = "CHANGE DELETED";
-                    }
-                }
-            }
-            if (change)
-            {
-                Changing();
-            }
-            if (Wagoni[0] != null)
-            {
-                Wagoni[0].GetComponent<snake>().Wagoni = Wagoni;
-            }
-            if ((Wagoni.Count == maxSize) && (!deleted))
-            {
-                for (int i = 0; i < choseble.Length; i++)
-                {
-                    GameObject.Destroy(choseble[i]);
-                }
-            }
-        }
-    }
-
     public void Changing()
     {
         for (int i = 0; i < 5; i++)
         {
             
             GameObject.Destroy(choseble[i]);
-            if ((lokomotiwExist) && (lokomotiwi[i] != null))
+            if ((!lokomotiwExist) && (lokomotiwi[i] != null))
             {
                 choseble[i] = GameObject.Instantiate(lokomotiwi[i], places[i].transform);
                 choseble[i].GetComponent<ChoseSostaw>().CreatingSystem = this;
                 choseble[i].GetComponent<ChoseSostaw>().currentPosition = createPoint;
 
             }
-            if ((sostawi[i] != null) && (!lokomotiwExist)) // on sozdaet na pustom meste bez utochneniya
+            if ((sostawi[i] != null) && (lokomotiwExist)) // on sozdaet na pustom meste bez utochneniya
             {
                 
                 choseble[i] = GameObject.Instantiate(sostawi[i], places[i].transform);
@@ -127,9 +69,6 @@ public class CreatingSystem : MonoBehaviour {
                 choseble[i].GetComponent<ChoseSostaw>().currentPosition = createPoint;
             }
         }
-        if (lokomotiwExist) lokomotiwExist = false;
-        else lokomotiwExist = true;
-        change = false;
     }
 
     public void End()

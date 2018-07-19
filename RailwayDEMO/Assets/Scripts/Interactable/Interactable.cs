@@ -110,7 +110,7 @@ public class Interactable : MonoBehaviour {
         }
     }
 
-    private void OnMouseExit()
+    public void OnMouseExit()
     {      
         if (!isStopped) {
         if (withOutline)

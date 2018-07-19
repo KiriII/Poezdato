@@ -90,7 +90,7 @@ namespace train
 
         public void Departure(GameObject departedTrain)
         {
-            if (departedTrain != gameObject) return;
+            //if (departedTrain != gameObject) return;
             state.isStopped = false;
             Info = type.ToString();              
             descriptionText = Info;

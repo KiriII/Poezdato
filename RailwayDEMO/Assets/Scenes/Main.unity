@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8563,32 +8563,32 @@ Prefab:
     - target: {fileID: 224377562348092922, guid: c0fa4656743b1b94aa14b78c1de2f125,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -75.87174
+      value: -34.25659
       objectReference: {fileID: 0}
     - target: {fileID: 224763769124096984, guid: c0fa4656743b1b94aa14b78c1de2f125,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -149.02173
+      value: -107.40659
       objectReference: {fileID: 0}
     - target: {fileID: 224846446050820154, guid: c0fa4656743b1b94aa14b78c1de2f125,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -441.62173
+      value: -400.0066
       objectReference: {fileID: 0}
     - target: {fileID: 224933064314097364, guid: c0fa4656743b1b94aa14b78c1de2f125,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -222.17172
+      value: -180.55658
       objectReference: {fileID: 0}
     - target: {fileID: 224514511045154512, guid: c0fa4656743b1b94aa14b78c1de2f125,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -368.47174
+      value: -326.8566
       objectReference: {fileID: 0}
     - target: {fileID: 224898817005462206, guid: c0fa4656743b1b94aa14b78c1de2f125,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -295.32175
+      value: -253.7066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0fa4656743b1b94aa14b78c1de2f125, type: 2}
@@ -9223,7 +9223,6 @@ MonoBehaviour:
   - {fileID: 0}
   createPoint: {fileID: 431121404}
   Wagoni: []
-  change: 0
   lokomotiwExist: 0
   current: 0
   firstSostaw: {fileID: 0}
