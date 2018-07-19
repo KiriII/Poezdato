@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using train;
 
 namespace interactableObj {
 	public class TrafficLight : Interactable {
@@ -10,6 +11,8 @@ namespace interactableObj {
 		public Light redLight;
 
 		public LightState currentLight;
+
+		private Train stoppedTrain;
 
 		private void Start() 
 		{
@@ -28,7 +31,6 @@ namespace interactableObj {
 				else 
 				{			
 					SetGreenLight();
-					TrainHandler.Departure();
 				}
 				//
 			}
@@ -45,13 +47,19 @@ namespace interactableObj {
 		{
 			redLight.enabled = false;
 			greenLight.enabled = true;		
-			currentLight = LightState.GREEN;			
+			currentLight = LightState.GREEN;
+			if (stoppedTrain != null)
+				stoppedTrain.Departure();			
 		}	
 
 		private void OnTriggerEnter(Collider other)
    		{
 			if (currentLight == LightState.RED)
-       			EventHandler.TriggerEnter();
+			{
+       			stoppedTrain = other.GetComponentInChildren<Train>();
+				if (stoppedTrain != null && stoppedTrain.type == train.Types.MainTrain)
+					stoppedTrain.Stop();
+			}
     	}
 	}
 

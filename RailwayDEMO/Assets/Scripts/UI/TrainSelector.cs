@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainSelector : MonoBehaviour {
-
-	// Use this for initialization
+	
 	void Start () 
 	{
 		TrainHandler.OnDeparture += Close;
+	}
+
+	private void OnDisable() 
+	{
+		TrainHandler.OnDeparture -= Close;
 	}
 
 	private void Close()

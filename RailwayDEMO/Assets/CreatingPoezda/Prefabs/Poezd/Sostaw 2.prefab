@@ -637,7 +637,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693279765220638}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 627.42, y: 17.06, z: 219.6248}
+  m_LocalPosition: {x: 642.7, y: 18.300001, z: 202.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4839930585099028}
@@ -2444,6 +2444,7 @@ MonoBehaviour:
   MaxSpeed: 120
   destination: {fileID: 0}
   Info: Some super interesting information
+  CurrentSpeed: 0
 --- !u!114 &114135333620806102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2455,9 +2456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba705b3c7e5f7fe418056576af73ad32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   Wagoni: []
-  back: {fileID: 0}
+  back: {fileID: 4592037072962714}
 --- !u!114 &114222559876050904
 MonoBehaviour:
   m_ObjectHideFlags: 1

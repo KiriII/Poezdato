@@ -27,20 +27,23 @@ namespace train
 
         [Tooltip("Description of the train")]
         public string Info = "Some super interesting information";
-
-        private float CurrentSpeed;
+        [HideInInspector]
+        public float CurrentSpeed;
+        private float lastSpeed;
 
         private struct State 
         {
             public bool isReady;
             public bool isStopped;
             public bool isArrived;
+            public bool isTracked;
 
-            public State(bool _isReady, bool _isStopped, bool _isArrived)
+            public State(bool _isReady, bool _isStopped, bool _isArrived, bool _isTracked)
             {
                 isReady = _isReady;
                 isStopped = _isStopped;
                 isArrived = _isArrived;
+                isTracked = _isTracked;
             }
         }
         private State state;  // struct with train current state  
@@ -49,13 +52,13 @@ namespace train
 
         private void Start()
         {
-            state = new State(false, true, false); // train state init
+            lastSpeed = MaxSpeed / 2;
+            state = new State(false, true, false, false); // train state init
             interComponent = GetComponent<DeleteWagon>();
             cS = FindObjectOfType<CreatingSystem>();
             
             // method subscription to time management 
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
-            EventHandler.OnTriggerEnter +=Stop;
             TrainHandler.OnDeparture += Departure;
         }
 
@@ -63,7 +66,6 @@ namespace train
         {
             // methods deletion from events
             EventHandler.OnTimeScaleChanged -= CheckTimeScale;
-            EventHandler.OnTriggerEnter -=Stop;
             TrainHandler.OnDeparture -= Departure;
             // eventHandler
         }
@@ -71,6 +73,12 @@ namespace train
         public void CheckTimeScale(bool stop)
         {
             state.isStopped = stop;
+        }
+
+        public override void Interact()
+        {
+            base.Interact();
+            TrainHandler.InfoUpdate(gameObject);
         }
 
         public void SetNewDestination(GameObject newDest)
@@ -85,22 +93,35 @@ namespace train
             Info = type.ToString();              
             descriptionText = Info;
             interComponent.descriptionText = Info;
-            cS.Wagoni[0].GetComponent<snake>().speed = MaxSpeed / 10;
-            Debug.Log("Go");
+            SetSpeed(lastSpeed);
         }
 
         public void Arrival()
-        {
-            state.isStopped = true;
+        {            
             state.isArrived = true;
-            TrainHandler.Arrival(gameObject);           // arrival event
+            Stop();
+            TrainHandler.Arrival(gameObject);                       // arrival event
         }
 
         public void Stop(){
             if (isStopped) return;
             state.isStopped = true;
-            TrainHandler.Stop(gameObject);              // stop event
-            cS.Wagoni[0].GetComponent<snake>().speed = 0;
+            lastSpeed = CurrentSpeed;           
+            SetSpeed(0);
+            if (!state.isArrived) TrainHandler.Stop(gameObject);    // stop event
+        }
+
+        public void SetSpeed(float newSpeed)
+        {
+            CurrentSpeed = newSpeed;
+            TrainHandler.SpeedChange(gameObject);
+        }
+
+        public void SoftSetSpeed(float newSpeed)
+        {
+            CurrentSpeed = newSpeed;
+            if (state.isTracked)
+                TrainHandler.StateChange(gameObject);
         }
 
 
@@ -119,6 +140,14 @@ namespace train
 
         public bool IsArrived(){
             return state.isArrived;
+        }
+
+        public bool IsTracked(){
+            return state.isTracked;
+        }
+
+        public void SetTracked(bool _isTracked){
+            state.isTracked = _isTracked;
         }
     }
 }
