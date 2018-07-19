@@ -70,8 +70,9 @@ namespace train
             // eventHandler
         }
 
-        public void CheckTimeScale(bool stop)
+        public override void CheckTimeScale(bool stop)
         {
+            base.CheckTimeScale(stop);
             state.isStopped = stop;
         }
 
@@ -87,8 +88,18 @@ namespace train
             TrainHandler.DestinationChanged(newDest);   // new destination event
         }
 
-        public void Departure()
+        public void Departure(GameObject departedTrain)
         {
+            if (departedTrain != gameObject) return;
+            state.isStopped = false;
+            Info = type.ToString();              
+            descriptionText = Info;
+            interComponent.descriptionText = Info;
+            SetSpeed(lastSpeed);
+        }
+
+        public void Departure()
+        {           
             state.isStopped = false;
             Info = type.ToString();              
             descriptionText = Info;

@@ -17,17 +17,17 @@ public class UpdateSpeed : MonoBehaviour {
 		commonText[0] = " speed: ";
 		commonText[1] = " km/h";
 		text = GetComponentInChildren<Text>();
-
+		
 		TrainHandler.OnSpeedChanged += UpdateTrainSpeed;
 		TrainHandler.OnStateChanged += UpdateTrainSpeed;
-		TrainHandler.OnInfoUpdate +=SetTrackedTrain;
+		TrainHandler.OnInfoUpdate += SetTrackedTrain;
 	}
 	
 	private void OnDisable() 
 	{
 		TrainHandler.OnSpeedChanged -= UpdateTrainSpeed;
 		TrainHandler.OnStateChanged -= UpdateTrainSpeed;
-		TrainHandler.OnInfoUpdate -=SetTrackedTrain;
+		TrainHandler.OnInfoUpdate -= SetTrackedTrain;
 	}
 
 	public void SetTrackedTrain(GameObject newTracking)

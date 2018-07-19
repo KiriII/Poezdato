@@ -6,16 +6,16 @@ public class TrainSelector : MonoBehaviour {
 	
 	void Start () 
 	{
-		TrainHandler.OnDeparture += Close;
+		EventHandler.OnCreating += HideOrShow;
 	}
 
 	private void OnDisable() 
 	{
-		TrainHandler.OnDeparture -= Close;
+		EventHandler.OnCreating -= HideOrShow;
 	}
 
-	private void Close()
+	private void HideOrShow(bool show)
 	{
-		gameObject.SetActive(false);
+		gameObject.SetActive(show);
 	}
 }

@@ -39,6 +39,8 @@ public class CreatingSystem : MonoBehaviour {
                 choseble[i].GetComponent<ChoseSostaw>().currentPosition = createPoint;
             }
         }
+
+        EventHandler.CreatingChanged(true);     // creation start
     }
 
     // Update is called once per frame
@@ -142,7 +144,9 @@ public class CreatingSystem : MonoBehaviour {
         {
             GameObject.Destroy(choseble[i]);
         }
-        TrainHandler.Departure();     // departure event
+
+        TrainHandler.Departure(Wagoni[0]);       // departure event
+        EventHandler.CreatingChanged(false);     // creation end
     } 
 
     public void StartCreating(GameObject startPoint , int createPointNumber) //задать точку начала построения поезда и номер пункта строительства
@@ -165,5 +169,7 @@ public class CreatingSystem : MonoBehaviour {
                 choseble[i].GetComponent<ChoseSostaw>().currentPosition = createPoint;
             }
         }
+
+        EventHandler.CreatingChanged(true);     // creation start
     }
 }

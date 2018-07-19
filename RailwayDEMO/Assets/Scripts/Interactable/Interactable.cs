@@ -54,7 +54,7 @@ public class Interactable : MonoBehaviour {
         EventHandler.OnTimeScaleChanged -= CheckTimeScale; 
     }
 
-    public void CheckTimeScale(bool stop) 
+    public virtual void CheckTimeScale(bool stop) 
     { 
         isStopped = stop; 
     }

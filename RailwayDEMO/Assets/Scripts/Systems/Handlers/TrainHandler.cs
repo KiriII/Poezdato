@@ -11,11 +11,10 @@ public class TrainHandler : MonoBehaviour {
 	// Movement events
     public delegate void MovementHandler(GameObject self);    
     public static event MovementHandler OnArrival;
+    public static event MovementHandler OnDeparture;
     public static event MovementHandler OnStop;
     public static event MovementHandler OnSpeedChanged;
-
-    public delegate void DepartureHandler();
-    public static event DepartureHandler OnDeparture;
+    
 
     public delegate void StateHandler(GameObject self);
     public static event StateHandler OnInfoUpdate;
@@ -32,6 +31,11 @@ public class TrainHandler : MonoBehaviour {
         OnArrival?.Invoke(self);
     }
 
+    public static void Departure(GameObject self)
+    {
+        OnDeparture?.Invoke(self);
+    }
+
     public static void Stop(GameObject self)
     {
         OnStop?.Invoke(self);
@@ -40,11 +44,6 @@ public class TrainHandler : MonoBehaviour {
     public static void SpeedChange(GameObject self)
     {
         OnSpeedChanged?.Invoke(self);
-    }
-
-    public static void Departure()
-    {
-        OnDeparture?.Invoke();
     }
 
     public static void InfoUpdate(GameObject self)
