@@ -17,10 +17,10 @@ public class CameraMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        place = -1; // sozdanie poezda v nachale
-        transform.rotation = createPlaces[0].rotation;
-        transform.position = createPlaces[0].position;
-        createPoezd = true;
+        place = 0; // sozdanie poezda v nachale
+        //transform.rotation = createPlaces[0].rotation;
+        //transform.position = createPlaces[0].position;
+        createPoezd = false;
         cameraPlaces[cameraPlaces.Length - 1] = null; // free camera
         isStopped = false;
 
