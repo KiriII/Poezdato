@@ -19,8 +19,8 @@ public class HideShowUI : MonoBehaviour {
 
 	public virtual void Setup() 
 	{	
-		if (!FindObjectOfType<CreatingSystem>().isCreating)	
-			HideOrShow(false);			
+		//if (!FindObjectOfType<CreatingSystem>().isCreating)	
+			HideOrShow(true);			
 	}
 
 	private void OnDisable() 
