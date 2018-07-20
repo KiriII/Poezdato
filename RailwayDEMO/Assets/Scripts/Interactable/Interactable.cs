@@ -45,18 +45,23 @@ public class Interactable : MonoBehaviour {
 		isFocused = false;
         isStopped = false;
         EventHandler.OnTimeScaleChanged += CheckTimeScale; 
-        
+        EventHandler.OnCreating += IsStopped;
     }
 
     void OnDisable() 
     { 
         // method deletion from events 
         EventHandler.OnTimeScaleChanged -= CheckTimeScale; 
+        EventHandler.OnCreating -= IsStopped;
     }
 
     public virtual void CheckTimeScale(bool stop) 
     { 
         isStopped = stop; 
+    }
+
+    public virtual void IsStopped(bool stop) 
+    {         
     }
 
     private void SetOutline()
@@ -99,9 +104,10 @@ public class Interactable : MonoBehaviour {
 		}        		
 	}
     
-    void OnMouseEnter()
+    public void OnMouseEnter()
     {   
-        if (!isStopped)    {
+        if (!isStopped)    
+        {
         if (withOutline)
             outline.enabled = true;
         description.enabled = true;
@@ -112,7 +118,8 @@ public class Interactable : MonoBehaviour {
 
     public void OnMouseExit()
     {      
-        if (!isStopped) {
+        if (!isStopped) 
+        {
         if (withOutline)
             outline.enabled = false;  
         description.enabled = false;

@@ -47,7 +47,6 @@ public class snake : MonoBehaviour {
     private void Update() 
     {        
         transform.Translate(Vector3.forward * speed * SPEED_K * Time.deltaTime);
-
     }
 
     private void UpdateSpeed(GameObject self)

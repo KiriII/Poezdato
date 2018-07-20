@@ -14,6 +14,12 @@ namespace interactableObj {
 			switcherState = TurnState.LEFT;
 		}
 
+		public override void IsStopped(bool stop)
+		{
+			base.IsStopped(stop);
+			isStopped = stop; 
+		}
+
 		public override void Interact()
 		{
 			base.Interact();

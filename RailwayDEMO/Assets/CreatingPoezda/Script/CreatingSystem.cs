@@ -28,16 +28,21 @@ public class CreatingSystem : MonoBehaviour {
     public float range;
     public float width;
 
+    //[HideInInspector]
+    public bool isCreating;
+
     // Use this for initialization
-    void Start() {
+    private void Awake() 
+    {
         deleted = false;
         lokomotiwExist = false;
+        isCreating = false;
         cameraMove = FindObjectOfType<CameraMove>();
         firstSostaw = new GameObject();
         firstSostaw.transform.position = new Vector3(createPoint.transform.position.x , createPoint.transform.position.y , createPoint.transform.position.z);
         current = createPoint.transform.position.x;
 
-        EventHandler.CreatingChanged(false);     // no creation 
+        //EventHandler.CreatingChanged(false);     // no creation 
     }
 
     public void Changing()
@@ -64,6 +69,7 @@ public class CreatingSystem : MonoBehaviour {
 
     public void End()
     {
+        isCreating = false;
         cameraMove.place = 0;
         cameraMove.createPoezd = false;
         for (int i = 0; i < Wagoni.Count; i++)
@@ -81,6 +87,7 @@ public class CreatingSystem : MonoBehaviour {
 
     public void StartCreating(GameObject startPoint , int createPointNumber) //задать точку начала построения поезда и номер пункта строительства
     {
+        isCreating = true;
         for (int i = 0; i < Wagoni.Count; i++)
         {
             if (Wagoni[i] != null) {

@@ -59,6 +59,7 @@ namespace train
             
             // method subscription to time management 
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
+            EventHandler.OnCreating +=ChangeDescription;
             TrainHandler.OnDeparture += Departure;
         }
 
@@ -66,8 +67,8 @@ namespace train
         {
             // methods deletion from events
             EventHandler.OnTimeScaleChanged -= CheckTimeScale;
-            TrainHandler.OnDeparture -= Departure;
-            // eventHandler
+            EventHandler.OnCreating +=ChangeDescription;
+            TrainHandler.OnDeparture -= Departure;            
         }
 
         public override void CheckTimeScale(bool stop)
@@ -88,13 +89,17 @@ namespace train
             TrainHandler.DestinationChanged(newDest);   // new destination event
         }
 
-        public void Departure(GameObject departedTrain)
+        public void ChangeDescription(bool change)
         {
-            //if (departedTrain != gameObject) return;
-            state.isStopped = false;
             Info = type.ToString();              
             descriptionText = Info;
             interComponent.descriptionText = Info;
+        }
+
+        public void Departure(GameObject departedTrain)
+        {
+            if (departedTrain != gameObject) return;
+            state.isStopped = false;            
             SetSpeed(lastSpeed);
         }
 

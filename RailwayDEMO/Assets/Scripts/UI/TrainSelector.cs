@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainSelector : MonoBehaviour {
+public class TrainSelector : HideShowUI {
+
+	public override void Setup()
+	{
+		//base.Setup();
+	}
 	
-	void Start () 
-	{
-        EventHandler.OnCreating += HideOrShow;
-        gameObject.SetActive(false);
-	}
+	public override void CheckTimeScale(bool stop)
+    {		
+    }
 
-	private void OnDisable() 
+	public override void HideOrShow(bool hide)
 	{
-		EventHandler.OnCreating += HideOrShow;
-	}
-
-	private void HideOrShow(bool show)
-	{
-		gameObject.SetActive(show);
+		base.HideOrShow(hide);
 	}
 }

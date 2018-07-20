@@ -19,6 +19,12 @@ namespace interactableObj {
 			SetGreenLight();
 		}
 
+		public override void IsStopped(bool stop)
+		{
+			base.IsStopped(stop);
+			isStopped = stop; 
+		}
+
 		public override void Interact()
 		{
 			if (!isStopped) {

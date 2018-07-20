@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HideShowUI : MonoBehaviour {
 
@@ -8,10 +9,18 @@ public class HideShowUI : MonoBehaviour {
 
 	void Start () 
 	{
-		anim = GetComponent<Animator>();
+		anim = GetComponent<Animator>();		
 
 		EventHandler.OnTimeScaleChanged += CheckTimeScale;
 		EventHandler.OnCreating += HideOrShow;
+
+		Setup();
+	}
+
+	public virtual void Setup() 
+	{	
+		if (!FindObjectOfType<CreatingSystem>().isCreating)	
+			HideOrShow(false);			
 	}
 
 	private void OnDisable() 
@@ -20,13 +29,13 @@ public class HideShowUI : MonoBehaviour {
 		EventHandler.OnCreating -= HideOrShow;
 	}
 	
-	public void CheckTimeScale(bool stop)
+	public virtual void CheckTimeScale(bool stop)
     {
 		int direction = stop ? -1 : 1;
         anim.SetInteger("direction", direction);
     }
 
-	public void HideOrShow(bool hide)
+	public virtual void HideOrShow(bool hide)
 	{
 		int direction = hide ? -1 : 1;
         anim.SetInteger("direction", direction);
