@@ -13,7 +13,7 @@ public class snake : MonoBehaviour {
     public Transform back;
 
     private Train it;
-    private float speed;
+    public float speed;
     private const float SPEED_K = 0.2f;
 
     private bool arraysInitiated;
@@ -28,8 +28,8 @@ public class snake : MonoBehaviour {
     {
 
         back.transform.position = new Vector3(transform.position.x - transform.localScale.z / 2, transform.position.y , transform.position.z );
-        it = GetComponent<Train>();
-        speed = it.CurrentSpeed;
+        it = this.gameObject.GetComponent<Train>();
+        //speed = it.CurrentSpeed;
 
         arraysInitiated = false;
         WagoniTrain = new List<Train>();
@@ -45,7 +45,15 @@ public class snake : MonoBehaviour {
     }
 
     private void Update() 
-    {        
+    {
+        for (int i = 1; i < Wagoni.Count; i++)
+        {
+            if ((Wagoni[i] != null) && (Wagoni[i - 1] != null))
+            { 
+                WagoniTransform[i].LookAt(WagoniSnake[i - 1].back);
+                WagoniSnake[i].speed = speed;
+            }
+        }
         transform.Translate(Vector3.forward * speed * SPEED_K * Time.deltaTime);
     }
 
@@ -68,8 +76,12 @@ public class snake : MonoBehaviour {
         }  
     }
 
-    private void InitArrays()
+    public void InitArrays()
     {
+        WagoniTrain = new List<Train>();
+        WagoniSnake = new List<snake>();
+        WagoniTransform = new List<Transform>();
+
         WagoniTrain.Capacity = Wagoni.Count;
         WagoniSnake.Capacity = Wagoni.Count;
         WagoniTransform.Capacity = Wagoni.Count;

@@ -469,11 +469,10 @@ GameObject:
   - component: {fileID: 4050563028163602}
   - component: {fileID: 114023301922069432}
   - component: {fileID: 114135333620806102}
-  - component: {fileID: 114243801873027556}
   - component: {fileID: 65317061631519544}
   m_Layer: 0
   m_Name: Sostaw 2
-  m_TagString: Untagged
+  m_TagString: Wagonchik
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2458,6 +2457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wagoni: []
   back: {fileID: 4592037072962714}
+  speed: 50
 --- !u!114 &114222559876050904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3965,25 +3965,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!114 &114243801873027556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1693279765220638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98ffbcf01d023944ebaea9d0b03a06bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  withOutline: 1
-  description: {fileID: 0}
-  text: {fileID: 0}
-  descriptionText: DELETE THIS
-  isStopped: 0
-  canDelete: 0
-  isLoko: 0
-  CreatingSystem: {fileID: 0}
 --- !u!114 &114374391201574058
 MonoBehaviour:
   m_ObjectHideFlags: 1

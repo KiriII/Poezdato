@@ -52,6 +52,7 @@ namespace train
 
         private void Start()
         {
+            
             lastSpeed = MaxSpeed / 2;
             state = new State(false, true, false, false); // train state init
             interComponent = GetComponent<DeleteWagon>();
@@ -61,6 +62,7 @@ namespace train
             EventHandler.OnTimeScaleChanged += CheckTimeScale;
             EventHandler.OnCreating +=ChangeDescription;
             TrainHandler.OnDeparture += Departure;
+            if (ID != 0) CurrentSpeed = 20f;
         }
 
         void OnDisable()

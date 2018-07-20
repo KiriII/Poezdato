@@ -12,7 +12,7 @@ public class ChoseSostaw : Interactable
     public GameObject currentPosition;
     public float range;
     public float width;
-    private int deletedNumber;
+    //private int deletedNumber;
 
     public void Start()
     {
@@ -21,6 +21,7 @@ public class ChoseSostaw : Interactable
         range = CreatingSystem.range;    
     }
 
+    /*
     private void OnMouseDown()
     {
         for (int i = 0; i < CreatingSystem.Wagoni.Count; i++)
@@ -87,4 +88,5 @@ public class ChoseSostaw : Interactable
             }
         }
     }
+    */
 }

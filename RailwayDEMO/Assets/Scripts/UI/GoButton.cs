@@ -18,7 +18,7 @@ public class GoButton : HideShowUI {
 
 	void Update () 
 	{
-        btnGo.interactable = creatingSystem.lokomotiwExist;
+        //btnGo.interactable = creatingSystem.lokomotiwExist;
     }
 
 	public override void CheckTimeScale(bool stop)

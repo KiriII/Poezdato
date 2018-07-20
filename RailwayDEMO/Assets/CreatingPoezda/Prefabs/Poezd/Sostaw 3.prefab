@@ -844,10 +844,9 @@ GameObject:
   - component: {fileID: 65171539354967560}
   - component: {fileID: 114387899510907936}
   - component: {fileID: 114103921687251082}
-  - component: {fileID: 114123191675220146}
   m_Layer: 0
   m_Name: Sostaw 3
-  m_TagString: Untagged
+  m_TagString: Wagonchik
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5663,28 +5662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba705b3c7e5f7fe418056576af73ad32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   Wagoni: []
   back: {fileID: 4164403954123400}
---- !u!114 &114123191675220146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1639541474411790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98ffbcf01d023944ebaea9d0b03a06bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  withOutline: 1
-  description: {fileID: 0}
-  text: {fileID: 0}
-  descriptionText: DELETE THIS
-  isStopped: 0
-  canDelete: 0
-  isLoko: 0
-  CreatingSystem: {fileID: 0}
+  speed: 50
 --- !u!114 &114139157282816676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11756,6 +11736,7 @@ MonoBehaviour:
   MaxSpeed: 120
   destination: {fileID: 0}
   Info: Some super interesting information
+  CurrentSpeed: 0
 --- !u!114 &114431903317825666
 MonoBehaviour:
   m_ObjectHideFlags: 1

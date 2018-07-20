@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DeleteWagon : Interactable
 {
+    /*
     public bool canDelete;
     public bool isLoko;
     public CreatingSystem creatingSystem;
@@ -47,4 +48,5 @@ public class DeleteWagon : Interactable
         }
         
     }
+    */
 }

@@ -18,7 +18,7 @@ public class HideUI : MonoBehaviour {
 	void Update () {
         if (this.gameObject.GetComponent<Button>())
         {
-            this.gameObject.GetComponent<Button>().interactable = creatingSystem.lokomotiwExist && !creatingSystem.deleted;
+           // this.gameObject.GetComponent<Button>().interactable = creatingSystem.lokomotiwExist && !creatingSystem.deleted;
         }
         this.gameObject.GetComponent<Image>().enabled = creatingSystem.cameraMove.createPoezd == forCreating;
         for (int i = 0; i < text.Length; i++)

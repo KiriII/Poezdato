@@ -20,7 +20,7 @@ public class Station : Interactable {
 
     private void OnMouseDown()
     {
-        if (Cs.Wagoni.Count == 0)
+        if (!Cs.isCreating)
         {
             Cs.StartCreating(startPoint, number);
         }
