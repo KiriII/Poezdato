@@ -12,9 +12,17 @@ public class EventHandler : MonoBehaviour {
     public delegate void TriggerEnterHandler();
     public static event TriggerEnterHandler OnTriggerEnter;
 
-    // Trigger collision events
+    // Creating events
     public delegate void CreatingSystemHandler(bool isCreating);
     public static event CreatingSystemHandler OnCreating;
+
+    // Start events
+    public delegate void StartHandler();
+    public static event StartHandler OnStart;
+
+    // Tasks events
+    public delegate void TaskStateHandler(Task completedTask);
+    public static event TaskStateHandler OnTaskCompleted;
 
 	public static void TimeScaleChanged(float timeScale)
     {
@@ -29,5 +37,15 @@ public class EventHandler : MonoBehaviour {
     public static void CreatingChanged(bool isCreating)
     {
         OnCreating?.Invoke(isCreating);
-    }   
+    }
+
+    public static void StartEvent()
+    {
+        OnStart?.Invoke();
+    }
+
+    public static void TaskCompleted(Task completedTask)
+    {
+        OnTaskCompleted?.Invoke(completedTask);
+    }
 }

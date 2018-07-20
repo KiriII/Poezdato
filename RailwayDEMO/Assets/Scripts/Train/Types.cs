@@ -7,5 +7,6 @@
 		Cargo,
 		Fuel,
 		Passanger,
+		Platform
 	}
 }
