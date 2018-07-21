@@ -29,6 +29,9 @@ namespace train
         public string Info = "Some super interesting information";
         [HideInInspector]
         public float CurrentSpeed;
+        [HideInInspector]
+        public int CurrentLine;
+
         private float lastSpeed;
 
         private struct State 

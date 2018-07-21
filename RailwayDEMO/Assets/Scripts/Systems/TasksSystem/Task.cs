@@ -5,6 +5,9 @@ using System.Linq;
 
 public class Task : MonoBehaviour {
 
+    [Tooltip("Connect this task with task system")]
+    public bool taskSystem = false;
+
     public List<Goal> Goals { get; set; }       // List of goals to complete
     public string TaskName { get; set; }        // Task name
     public string Description { get; set; }     // Task description
@@ -47,8 +50,9 @@ public class Task : MonoBehaviour {
     }
 
     public virtual void Done()  // OnComplete actions
-    {			
-        TaskSystem.Instance.CheckTasks();
+    {		
+        EventHandler.TaskCompleted(this);	
+        if (taskSystem) TaskSystem.Instance.CheckTasks();
 		
         // Task result
     }

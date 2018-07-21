@@ -45,14 +45,14 @@ public class Interactable : MonoBehaviour {
 		isFocused = false;
         isStopped = false;
         EventHandler.OnTimeScaleChanged += CheckTimeScale; 
-        EventHandler.OnCreating += IsStopped;
+        //EventHandler.OnCreating += IsStopped;
     }
 
     void OnDisable() 
     { 
         // method deletion from events 
         EventHandler.OnTimeScaleChanged -= CheckTimeScale; 
-        EventHandler.OnCreating -= IsStopped;
+        //EventHandler.OnCreating -= IsStopped;
     }
 
     public virtual void CheckTimeScale(bool stop) 

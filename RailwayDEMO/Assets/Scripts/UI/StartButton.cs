@@ -20,5 +20,6 @@ public class StartButton : MonoBehaviour {
 		anim.SetInteger("direction", 1);
 		Time.timeScale = 1;
 		EventHandler.TimeScaleChanged(Time.timeScale);
+		EventHandler.StartEvent();
 	}
 }
