@@ -10,6 +10,7 @@ public class AddToTrain : MonoBehaviour {
     public Transform it;
     bool wait;
 
+
     // Use this for initialization
     void Start () {
         wait = false;
@@ -55,4 +56,5 @@ public class AddToTrain : MonoBehaviour {
             }
         }
     }
+
 }

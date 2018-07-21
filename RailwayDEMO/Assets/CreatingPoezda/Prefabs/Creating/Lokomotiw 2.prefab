@@ -523,7 +523,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4645936228294364}
   - component: {fileID: 65249256467787730}
-  - component: {fileID: 114638927735808926}
   m_Layer: 0
   m_Name: Lokomotiw 2
   m_TagString: Untagged
@@ -19490,28 +19489,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!114 &114638927735808926
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1718797459737808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5096732961369d54fabe471009b9d0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  withOutline: 1
-  description: {fileID: 0}
-  text: {fileID: 0}
-  descriptionText: Create this
-  isStopped: 0
-  onRoad: {fileID: 1248435659015854, guid: 1599a3945ab16cf40b4da7c709d786e5, type: 2}
-  CreatingSystem: {fileID: 0}
-  isLoko: 1
-  currentPosition: {fileID: 0}
-  range: 0
-  width: 0
 --- !u!114 &114650615478570908
 MonoBehaviour:
   m_ObjectHideFlags: 1

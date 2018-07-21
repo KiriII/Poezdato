@@ -362,7 +362,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4365772135386136}
   - component: {fileID: 65760510134771140}
-  - component: {fileID: 114308966717430032}
   m_Layer: 0
   m_Name: Sostaw 3
   m_TagString: Untagged
@@ -1514,8 +1513,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279429337231104}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.008, y: 0.008, z: 0.008}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4457597189847638}
   - {fileID: 4297280552885686}
@@ -7960,28 +7959,6 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!114 &114308966717430032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1279429337231104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5096732961369d54fabe471009b9d0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  withOutline: 1
-  description: {fileID: 0}
-  text: {fileID: 0}
-  descriptionText: Create this
-  isStopped: 0
-  onRoad: {fileID: 1639541474411790, guid: d3cbea21525becb45b31c94dbe8c19fe, type: 2}
-  CreatingSystem: {fileID: 0}
-  isLoko: 0
-  currentPosition: {fileID: 0}
-  range: 0
-  width: 0
 --- !u!114 &114309209064871906
 MonoBehaviour:
   m_ObjectHideFlags: 1

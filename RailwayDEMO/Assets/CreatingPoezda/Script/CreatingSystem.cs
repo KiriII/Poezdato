@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class CreatingSystem : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class CreatingSystem : MonoBehaviour {
     public GameObject[] lokomotiwi = new GameObject[5]; // prefabs
     public GameObject[] sostawi = new GameObject[5];    // prefabs
     //[HideInInspector]
-    //public GameObject[] choseble = new GameObject[5];   // on scene
+    public GameObject[] choseble = new GameObject[5];   // on scene
     public GameObject createPoint;
     //[HideInInspector]
     //public List<GameObject> Wagoni = new List<GameObject>(); // 0 - lokomotiw , 1.. sostawi
@@ -32,10 +33,14 @@ public class CreatingSystem : MonoBehaviour {
     //[HideInInspector]
     public bool isCreating;
 
-    private int sostawCount;
+    [HideInInspector]
+    public int sostawCount;
     private int lokomotCount;
     public Transform[] trainsStarts;
     float time = 0;
+
+    public GameObject[] NeedPlaces;
+    public Text[] NeedTextes;
 
     // Use this for initialization
     private void Awake() 
@@ -177,7 +182,10 @@ public class CreatingSystem : MonoBehaviour {
         }
         currentWagon.GetComponent<snake>().Wagoni.Add(currentWagon);
         trainsStarts[lokoPos].GetComponent<lokoPoint>().current.lokomotiw = currentWagon.GetComponent<snake>();
+        trainsStarts[lokoPos].GetComponent<lokoPoint>().ForUI = currentWagon.GetComponent<snake>().WagoniNeeded;
         currentWagon.transform.position = new Vector3(trainsStarts[lokoPos].position.x , trainsStarts[lokoPos].position.y , trainsStarts[lokoPos].position.z);
         currentWagon.GetComponent<snake>().lokoPoint = lokoPos;
     }
+
+
 }
