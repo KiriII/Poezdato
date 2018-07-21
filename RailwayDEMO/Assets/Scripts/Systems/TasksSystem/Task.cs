@@ -14,7 +14,7 @@ public class Task : MonoBehaviour {
     public bool Completed { get; set; }         // state
     public int GoalIndex { get; set; }          // Index of current goal
 
-    private void Start()
+    private void Awake()
     {
         Goals = new List<Goal>();   // list init
         GoalIndex = 0;              // first goal index

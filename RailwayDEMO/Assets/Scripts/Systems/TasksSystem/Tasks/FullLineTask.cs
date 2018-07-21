@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class FullLineTask : Task {
 
-    [Range(1, 5)]
-    public int LineNumber;
+    [Range(1, 5)]   
+    public int LineNumber = 1;
+    [Header("Only in manual mode")]
     public int CargoRequiredNumber;
     public int FuelRequiredNumber;
     public int PlatformRequiredNumber;
 
-    private Dictionary<train.Types, int> requiredTypes = new Dictionary<train.Types, int>();
+    //[HideInInspector]
+    public List<train.Types> requiredTypes = new List<train.Types>();
+    //[HideInInspector]
+    public List<int> requiredNumber = new List<int>();
 
-    private void Awake() 
+    private void Start()
     {
 
         // reading from file
-        //requiredTypes = HelpFunctions.JsonToDictionary();
+        TaskLoader.Instance.LoadTaskInfo(LineNumber);
 
         // manually
-        requiredTypes.Add(train.Types.Cargo, CargoRequiredNumber);
-        requiredTypes.Add(train.Types.Fuel, FuelRequiredNumber);
-        requiredTypes.Add(train.Types.Platform, PlatformRequiredNumber);
+        /*
+        requiredTypes.Add(train.Types.Cargo);
+        requiredTypes.Add(train.Types.Fuel);
+        requiredTypes.Add(train.Types.Platform);
 
+        requiredNumber.Add(CargoRequiredNumber);
+        requiredNumber.Add(FuelRequiredNumber);
+        requiredNumber.Add(PlatformRequiredNumber);
+        Debug.Log("Init");
+        */
         EventHandler.OnStart += Activating;
     }
 
@@ -36,9 +46,9 @@ public class FullLineTask : Task {
 
 		// list of goals
         Goals = new List<Goal>(requiredTypes.Count);
-        foreach (var rType in requiredTypes)
+        for (int i = 0; i < requiredTypes.Count; i++)
         {
-            Goals.Add(new TrainSetGoal(this, rType.Key, "Необходимые вагоны", false, 0, rType.Value));
+            Goals.Add(new TrainSetGoal(this, requiredTypes[i], "Необходимые вагоны", false, 0, requiredNumber[i]));
         }       
         
     }
