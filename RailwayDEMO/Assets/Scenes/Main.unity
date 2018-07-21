@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lokomotiw: {fileID: 0}
+  it: {fileID: 0}
 --- !u!65 &45787765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12176,7 +12177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMove: {fileID: 0}
-  maxSize: 20
+  maxSize: 10
   lokomotiwi:
   - {fileID: 1248435659015854, guid: 1599a3945ab16cf40b4da7c709d786e5, type: 2}
   - {fileID: 1996658398746362, guid: 16f10b865cc1c5441a8bed4a41661b11, type: 2}

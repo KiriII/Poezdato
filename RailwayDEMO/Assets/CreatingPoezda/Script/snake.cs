@@ -12,6 +12,9 @@ public class snake : MonoBehaviour {
     public List<GameObject> Wagoni = null; // dlya lokomotiva
     public Transform back;
 
+    public List<int> WagoniNeeded;
+    public int lokoPoint;
+
     private Train it;
     public float speed;
     private const float SPEED_K = 0.2f;

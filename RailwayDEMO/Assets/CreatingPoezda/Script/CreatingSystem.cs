@@ -89,11 +89,15 @@ public class CreatingSystem : MonoBehaviour {
     }
     */
 
-    public void End()
+    public void End(snake lokomotiw)
     {
-        isCreating = false;
-        cameraMove.place = 0;
-        cameraMove.createPoezd = false;
+        trainsStarts[lokomotiw.GetComponent<snake>().lokoPoint].GetComponent<lokoPoint>().current.transform.position
+            = new Vector3(trainsStarts[lokomotiw.GetComponent<snake>().lokoPoint].GetComponent<lokoPoint>().transform.position.x - range / 1.5f - width / 2, 
+            trainsStarts[lokomotiw.GetComponent<snake>().lokoPoint].transform.position.y, trainsStarts[lokomotiw.GetComponent<snake>().lokoPoint].transform.position.z);           
+        createLoko(lokomotiw.GetComponent<snake>().lokoPoint);
+        //isCreating = false;
+        //cameraMove.place = 0;
+        //cameraMove.createPoezd = false;
         //for (int i = 0; i < Wagoni.Count; i++)
         //{
         //    Wagoni[i].GetComponent<DeleteWagon>().canDelete = false;
@@ -104,7 +108,7 @@ public class CreatingSystem : MonoBehaviour {
         //}
 
         //TrainHandler.Departure(Wagoni[0]);       // departure event
-        EventHandler.CreatingChanged(false);     // creation end
+        //EventHandler.CreatingChanged(false);     // creation end
     } 
 
     public void StartCreating(GameObject startPoint , int createPointNumber) //задать точку начала построения поезда и номер пункта строительства
@@ -165,8 +169,15 @@ public class CreatingSystem : MonoBehaviour {
         System.Random rnd = new System.Random();
         int current = rnd.Next(0, lokomotCount);
         GameObject currentWagon = Instantiate(lokomotiwi[current]);
+        int wagoniNeedCount = rnd.Next(0, sostawCount);
+        for (int i = 0; i < sostawCount; i++)
+        {
+            current = rnd.Next(0, maxSize / sostawCount);
+            currentWagon.GetComponent<snake>().WagoniNeeded.Add(current);
+        }
         currentWagon.GetComponent<snake>().Wagoni.Add(currentWagon);
         trainsStarts[lokoPos].GetComponent<lokoPoint>().current.lokomotiw = currentWagon.GetComponent<snake>();
         currentWagon.transform.position = new Vector3(trainsStarts[lokoPos].position.x , trainsStarts[lokoPos].position.y , trainsStarts[lokoPos].position.z);
+        currentWagon.GetComponent<snake>().lokoPoint = lokoPos;
     }
 }
