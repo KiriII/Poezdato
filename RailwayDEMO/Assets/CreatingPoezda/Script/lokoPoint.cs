@@ -37,10 +37,13 @@ public class lokoPoint : MonoBehaviour {
 
     public void ChangeExistWagoni()
     {
-        for (int i = 0; i < Cs.sostawCount; i++)
+        if (sad = true)
         {
-            if (ForUI[i] >= 0) Cs.NeedTextes[i].text = "X" + ForUI[i];
-            else Cs.NeedTextes[i].text = "X" + 0;
+            for (int i = 0; i < Cs.sostawCount; i++)
+            {
+                if (ForUI[i] >= 0) Cs.NeedTextes[i].text = "X" + ForUI[i];
+                else Cs.NeedTextes[i].text = "X" + 0;
+            }
         }
     }
 

@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 65542193711293520}
   - component: {fileID: 114327230689910338}
   - component: {fileID: 114337177542602658}
+  - component: {fileID: 114050564151394004}
   m_Layer: 0
   m_Name: Sostaw 4
   m_TagString: Wagonchik
@@ -863,7 +864,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605749772554390}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 219.1778, y: 41.07, z: 476.11224}
+  m_LocalPosition: {x: -298.62787, y: 42.53, z: 794.0996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4664542336864346}
@@ -1951,6 +1952,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114050564151394004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605749772554390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752c8119ed5742d478f7bb397a5e360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  num: 0
+  minDist: 0.1
+  speed: 10
+  go: 1
 --- !u!114 &114327230689910338
 MonoBehaviour:
   m_ObjectHideFlags: 1

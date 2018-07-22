@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 65518494709251016}
   - component: {fileID: 114458661203741114}
   - component: {fileID: 114053013630964262}
+  - component: {fileID: 114673130152194700}
   m_Layer: 0
   m_Name: Lokomotiw 1
   m_TagString: Untagged
@@ -5206,6 +5207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wagoni: []
   back: {fileID: 4333522591207626}
+  WagoniNeeded: 
+  lokoPoint: 0
+  speed: 0
 --- !u!114 &114121063031782100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13545,6 +13549,7 @@ MonoBehaviour:
   destination: {fileID: 0}
   Info: Some super interesting information
   CurrentSpeed: 0
+  CurrentLine: 0
 --- !u!114 &114546338449370716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16130,6 +16135,22 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114673130152194700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1248435659015854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752c8119ed5742d478f7bb397a5e360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  num: 0
+  minDist: 0.1
+  speed: 10
+  go: 1
 --- !u!114 &114772095962498328
 MonoBehaviour:
   m_ObjectHideFlags: 1

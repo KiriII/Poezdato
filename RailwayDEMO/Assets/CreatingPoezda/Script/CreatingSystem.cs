@@ -45,7 +45,8 @@ public class CreatingSystem : MonoBehaviour {
     public GameObject[] NeedPlaces;
     public Text[] NeedTextes;
     public Text line;
-    public Text startGoWagon;
+    public GameObject startGoWagon;
+    public GameObject itWagonUI;
 
     // Use this for initialization
     private void Awake() 
@@ -167,10 +168,11 @@ public class CreatingSystem : MonoBehaviour {
 
     public void goWagon()
     {
+        Destroy(itWagonUI);
         System.Random rnd = new System.Random();
         int current = rnd.Next(0, sostawCount);
         GameObject currentWagon = Instantiate(sostawi[current]);
-        startGoWagon.text = currentWagon.GetComponent<Train>().Name;
+        itWagonUI = Instantiate(choseble[current] , startGoWagon.transform);
         currentWagon.transform.position = createPoint.transform.position;
     }
 
@@ -189,6 +191,8 @@ public class CreatingSystem : MonoBehaviour {
         trainsStarts[lokoPos].GetComponent<lokoPoint>().current.lokomotiw = currentWagon.GetComponent<snake>();
         trainsStarts[lokoPos].GetComponent<lokoPoint>().ForUI = currentWagon.GetComponent<snake>().WagoniNeeded;
         currentWagon.transform.position = new Vector3(trainsStarts[lokoPos].position.x , trainsStarts[lokoPos].position.y , trainsStarts[lokoPos].position.z);
+        currentWagon.transform.rotation =trainsStarts[lokoPos].transform.rotation;
+        currentWagon.transform.Rotate(Vector3.up , 90);
         currentWagon.GetComponent<snake>().lokoPoint = lokoPos;
     }
 

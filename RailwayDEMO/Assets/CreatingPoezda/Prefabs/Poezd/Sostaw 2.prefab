@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 114023301922069432}
   - component: {fileID: 114135333620806102}
   - component: {fileID: 65317061631519544}
+  - component: {fileID: 114341847970332380}
   m_Layer: 0
   m_Name: Sostaw 2
   m_TagString: Wagonchik
@@ -636,7 +637,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693279765220638}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 642.7, y: 18.300001, z: 202.5}
+  m_LocalPosition: {x: -295.9525, y: 38.59, z: 794.7339}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4839930585099028}
@@ -2444,6 +2445,7 @@ MonoBehaviour:
   destination: {fileID: 0}
   Info: Some super interesting information
   CurrentSpeed: 0
+  CurrentLine: 0
 --- !u!114 &114135333620806102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2457,6 +2459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wagoni: []
   back: {fileID: 4592037072962714}
+  WagoniNeeded: 
+  lokoPoint: 0
   speed: 50
 --- !u!114 &114222559876050904
 MonoBehaviour:
@@ -3965,6 +3969,26 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114341847970332380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1693279765220638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752c8119ed5742d478f7bb397a5e360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  num: 0
+  minDist: 0.1
+  speed: 10
+  go: 1
 --- !u!114 &114374391201574058
 MonoBehaviour:
   m_ObjectHideFlags: 1

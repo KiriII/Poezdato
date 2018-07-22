@@ -48,7 +48,7 @@ public class AddToTrain : MonoBehaviour {
                     end = false;
                 } 
             }
-            loko.ChangeExistWagoni();
+            if ("Линия " + loko.self == Cs.line.text) loko.ChangeExistWagoni();
             /*
             if ((end) || (lokomotiw.Wagoni.Count == Cs.maxSize))
             {
@@ -63,7 +63,7 @@ public class AddToTrain : MonoBehaviour {
     {        
         if (completedTask.LineNumber == lokomotiw.GetComponent<Train>().CurrentLine)
         {
-            lokomotiw.GetComponent<Train>().SetSpeed(50);
+            lokomotiw.GetComponent<Train>().SetSpeed( 50 );
             wait = true;
             if (completedTask.Completed)
             {
