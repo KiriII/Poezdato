@@ -1,1 +1,12 @@
-{"Line1Types":["Cargo","Fuel","Platform"],"Line1Number":[1,1,1],"Line2Types":["Cargo","Fuel","Platform"],"Line2Number":[2,0,8],"Line3Types":["MainTrain","Cargo","Fuel","Platform"],"Line3Number":[1,2,6,4],"Line4Types":[],"Line4Number":[],"Line5Types":[],"Line5Number":[]}
+{
+  "Line1Types": [ "MainTrain", "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line1Number": [ 0, 1, 1, 1, 0 ],
+  "Line2Types": [ "MainTrain", "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line2Number": [ 2, 0, 8, 0, 0 ],
+  "Line3Types": [ "MainTrain", "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line3Number": [ 1, 2, 6, 4, 0 ],
+  "Line4Types": [],
+  "Line4Number": [],
+  "Line5Types": [],
+  "Line5Number": []
+}

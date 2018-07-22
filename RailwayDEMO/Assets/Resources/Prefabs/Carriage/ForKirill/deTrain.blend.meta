@@ -3,6 +3,27 @@ guid: 78c52162097389b41b5c3b9394028a9a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Plane_000
+    100004: Plane_001
+    400000: //RootNode
+    400002: Plane_000
+    400004: Plane_001
+    2100000: Red
+    2100002: RJD
+    2100004: Grey_default_
+    2100006: Dark_Grey
+    2100008: Orange
+    2100010: Yellow
+    2100012: Blue
+    2300000: Plane_000
+    2300002: Plane_001
+    3300000: Plane_000
+    3300002: Plane_001
+    4300000: Plane_000
+    4300002: Plane_001
+    7400000: Default Take
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -56,7 +77,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

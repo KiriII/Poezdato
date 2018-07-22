@@ -73,7 +73,7 @@ public class AddToTrain : MonoBehaviour {
             {
                 Debug.Log("BAD!!!");
             }
-            //completedTask.Activating();
+            completedTask.ResetTask();
         }
 
     }

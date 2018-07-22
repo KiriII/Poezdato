@@ -189,6 +189,7 @@ public class CreatingSystem : MonoBehaviour {
         }
         currentWagon.GetComponent<snake>().Wagoni.Add(currentWagon);
         trainsStarts[lokoPos].GetComponent<lokoPoint>().current.lokomotiw = currentWagon.GetComponent<snake>();
+        currentWagon.GetComponent<Train>().CurrentLine = trainsStarts[lokoPos].GetComponent<lokoPoint>().lineNumber;
         trainsStarts[lokoPos].GetComponent<lokoPoint>().ForUI = currentWagon.GetComponent<snake>().WagoniNeeded;
         currentWagon.transform.position = new Vector3(trainsStarts[lokoPos].position.x , trainsStarts[lokoPos].position.y , trainsStarts[lokoPos].position.z);
         currentWagon.transform.rotation =trainsStarts[lokoPos].transform.rotation;

@@ -16148,9 +16148,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   num: 0
-  minDist: 0.1
+  minDist: 0.15
   speed: 10
   go: 1
+  isReady: 0
 --- !u!114 &114772095962498328
 MonoBehaviour:
   m_ObjectHideFlags: 1

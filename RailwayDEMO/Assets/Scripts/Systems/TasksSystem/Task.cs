@@ -60,8 +60,9 @@ public class Task : MonoBehaviour {
     public virtual void Done()  // OnComplete actions
     {
         Debug.Log("Task comleted");
+        Completed = true;
         EventHandler.TaskCompleted(this);	
-        if (taskSystem) TaskSystem.Instance.CheckTasks();
+        //if (taskSystem) TaskSystem.Instance.CheckTasks();
 		
         // Task result
     }

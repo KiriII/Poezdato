@@ -12,15 +12,19 @@ public class WaypointsMovement : MonoBehaviour {
 
     public bool go = true;
 
+    [HideInInspector]
+    public bool isReady;
+
 	// Use this for initialization
 	void Start () {
-		
+        if (waypoints.Count != 0)
+            isReady = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {    
 
-        if (go)
+        if (go && isReady)
         {
             float dist = Vector3.Distance(gameObject.transform.position, waypoints[num].transform.position);
             if (dist > minDist)
