@@ -48,9 +48,7 @@ public class TaskLoader : MonoBehaviour {
     }
 
     public void LoadAllTasksInfo()
-    {
-        Debug.Log("Start loading all tasks info");
-        
+    {        
         //-----Line 1-----
         tasks[0].requiredTypes.AddRange(ListConvertStringToTypes(taskInfo.Line1Types));
         tasks[0].requiredNumber.AddRange(taskInfo.Line1Number);
@@ -72,7 +70,6 @@ public class TaskLoader : MonoBehaviour {
 
     public void LoadTaskInfo(int line)
     {
-        Debug.Log("Start loading task info");
         FullLineTask lineTask = tasks[line - 1];
         switch (line)
         {
@@ -110,7 +107,6 @@ public class TaskLoader : MonoBehaviour {
 
     public void SaveTaskInfo()
     {
-        Debug.Log("Start saving");
         taskInfo.CLearAll();
 
         //-----Line 1-----

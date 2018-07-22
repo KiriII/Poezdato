@@ -63,9 +63,10 @@ public class FullLineTask : MonoBehaviour {
         requiredTypes.Clear();
         requiredNumber.Clear();
         TaskLoader.Instance.LoadTaskInfo(LineNumber);
+        EventHandler.TaskNumberChanged(this);
         Completed = false;
         currentNumber = 0;
-        numCompleted = 5;
+        numCompleted = 4;
         failed = false;
         isFinished = false;
 
@@ -82,29 +83,28 @@ public class FullLineTask : MonoBehaviour {
         if (LineNumber == arrivedTrain.CurrentLine)
         {
             currentNumber++;
-            if (arrivedTrain.type == train.Types.MainTrain)
-            {
-                requiredNumber[0] -= 1;
-                if (requiredNumber[0] == 0)  numCompleted--;
-            }
             if (arrivedTrain.type == train.Types.Cargo)
             {
                 requiredNumber[1] -= 1;
+                EventHandler.TaskNumberChanged(this);
                 if (requiredNumber[1] == 0) numCompleted--;
             }
             if (arrivedTrain.type == train.Types.Fuel)
             {
                 requiredNumber[2] -= 1;
+                EventHandler.TaskNumberChanged(this);
                 if (requiredNumber[2] == 0) numCompleted--;
             }
             if (arrivedTrain.type == train.Types.Platform)
             {
                 requiredNumber[3] -= 1;
+                EventHandler.TaskNumberChanged(this);
                 if (requiredNumber[3] == 0) numCompleted--;
             }
             if (arrivedTrain.type == train.Types.Platform)
             {
                 requiredNumber[4] -= 1;
+                EventHandler.TaskNumberChanged(this);
                 if (requiredNumber[4] == 0) numCompleted--;
             }
             if (numCompleted == 0)

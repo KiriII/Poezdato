@@ -27,6 +27,11 @@ public class WaypointsMovement : MonoBehaviour {
 
         TrainHandler.OnSpeedChanged += ChangeSpeed;
 	}
+
+    private void OnDisable() 
+    {
+        TrainHandler.OnSpeedChanged -= ChangeSpeed;
+    }
 	
 	// Update is called once per frame
 	void Update () {  
@@ -48,18 +53,19 @@ public class WaypointsMovement : MonoBehaviour {
             }
         }
 		//if (!go)
-           // gameObject.transform.position += gameObject.transform.forward * speed * SPEED_CONST * Time.deltaTime;
+            //gameObject.transform.position += gameObject.transform.forward * speed * SPEED_CONST * Time.deltaTime;
 
 	}
 
     public void ChangeSpeed(GameObject train)
     {
-        if (train == gameObject)
+        if (train == this.gameObject)
             speed = train.GetComponent<Train>().CurrentSpeed;
     }
 
     public void Move()
     {
+        
         gameObject.transform.LookAt(waypoints[num].transform.position);
         gameObject.transform.position += gameObject.transform.forward * speed * SPEED_CONST * Time.deltaTime;
     }

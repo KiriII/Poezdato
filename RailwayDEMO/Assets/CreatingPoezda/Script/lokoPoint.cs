@@ -14,11 +14,15 @@ public class lokoPoint : MonoBehaviour {
     //[HideInInspector]
     public int self;
 
+    public int trackedLine;
+
     void Start()
     {
         self = lineNumber;
         sad = false;
         Cs = FindObjectOfType<CreatingSystem>();
+        trackedLine = 1;
+        EventHandler.OnTaskNumberChanged += ChangeExistWagoni;
     }
 
     private void OnMouseDown()
@@ -33,6 +37,7 @@ public class lokoPoint : MonoBehaviour {
 
             Cs.NeedTextes[i].text = "X" + ForUI[i];
         }
+        trackedLine = self;
         sad = true;
     }
 
@@ -44,6 +49,23 @@ public class lokoPoint : MonoBehaviour {
             {
                 if (ForUI[i] >= 0) Cs.NeedTextes[i].text = "X" + ForUI[i];
                 else Cs.NeedTextes[i].text = "X" + 0;
+            }
+        }
+    }
+
+    public void ChangeExistWagoni(FullLineTask task)
+    {
+        if (trackedLine == task.LineNumber)
+        {        
+            ForUI = task.requiredNumber;
+
+            if (sad = true)
+            {
+                for (int i = 0; i < Cs.sostawCount; i++)
+                {
+                    if (ForUI[i] >= 0) Cs.NeedTextes[i].text = "X" + ForUI[i];
+                    else Cs.NeedTextes[i].text = "X" + 0;
+                }
             }
         }
     }

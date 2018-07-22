@@ -22,7 +22,7 @@ public class CameraMove : MonoBehaviour {
         //transform.position = createPlaces[0].position;
         createPoezd = false;
         cameraPlaces[cameraPlaces.Length - 1] = null; // free camera
-        isStopped = false;
+        isStopped = true;
 
         EventHandler.OnTimeScaleChanged += CheckTimeScale;
 	}

@@ -1,12 +1,12 @@
 {
-  "Line1Types": [ "MainTrain", "Cargo", "Fuel", "Platform", "Passanger" ],
-  "Line1Number": [ 0, 1, 1, 1, 0 ],
-  "Line2Types": [ "MainTrain", "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line1Types": [ "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line1Number": [ 1, 1, 1, 0 ],
+  "Line2Types": [  "Cargo", "Fuel", "Platform", "Passanger" ],
   "Line2Number": [ 2, 0, 8, 0, 0 ],
-  "Line3Types": [ "MainTrain", "Cargo", "Fuel", "Platform", "Passanger" ],
-  "Line3Number": [ 1, 2, 6, 4, 0 ],
-  "Line4Types": [],
-  "Line4Number": [],
-  "Line5Types": [],
-  "Line5Number": []
+  "Line3Types": [ "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line3Number": [  2, 6, 4, 0 ],
+  "Line4Types": [ "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line4Number": [  2, 0, 0, 0 ],
+  "Line5Types": [ "Cargo", "Fuel", "Platform", "Passanger" ],
+  "Line5Number": [  0, 1, 3, 0 ]
 }

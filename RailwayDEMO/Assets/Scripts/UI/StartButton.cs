@@ -17,7 +17,7 @@ public class StartButton : MonoBehaviour {
 		anim.SetInteger("direction", -1);
 		
 		Time.timeScale = 0f;
-		EventHandler.TimeScaleChanged(Time.timeScale);
+		//EventHandler.TimeScaleChanged(Time.timeScale);
 
         Cs = FindObjectOfType<CreatingSystem>();
     }	

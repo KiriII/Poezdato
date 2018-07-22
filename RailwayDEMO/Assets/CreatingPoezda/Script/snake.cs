@@ -26,6 +26,8 @@ public class snake : MonoBehaviour {
 
     private bool creating;
 
+    public bool isMoveing;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -33,7 +35,7 @@ public class snake : MonoBehaviour {
         back.transform.position = new Vector3(transform.position.x - transform.localScale.z / 2, transform.position.y , transform.position.z );
         it = this.gameObject.GetComponent<Train>();
         //speed = it.CurrentSpeed;
-
+        isMoveing = false;
         arraysInitiated = false;
         WagoniTrain = new List<Train>();
         WagoniSnake = new List<snake>();
@@ -57,7 +59,8 @@ public class snake : MonoBehaviour {
                 WagoniSnake[i].speed = speed;
             }
         }
-        transform.Translate(Vector3.forward * speed * SPEED_K * Time.deltaTime);
+        if(isMoveing)
+            transform.Translate(Vector3.forward * speed * SPEED_K * Time.deltaTime);
     }
 
     private void UpdateSpeed(GameObject self)

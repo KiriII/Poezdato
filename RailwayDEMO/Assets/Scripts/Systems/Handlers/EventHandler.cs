@@ -30,6 +30,9 @@ public class EventHandler : MonoBehaviour {
     public delegate void LineGoalHandler(GameObject newTrain);
     public static event LineGoalHandler OnLineChanged;
 
+    public delegate void TaskUIHandler(FullLineTask completedTask);
+    public static event TaskUIHandler OnTaskNumberChanged;
+
     public static void TimeScaleChanged(float timeScale)
     {
         OnTimeScaleChanged?.Invoke(timeScale == 0);
@@ -63,5 +66,10 @@ public class EventHandler : MonoBehaviour {
     public static void LineChanged(GameObject newTrain)
     {
         OnLineChanged?.Invoke(newTrain);
+    }
+
+    public static void TaskNumberChanged(FullLineTask completedTask)
+    {
+        OnTaskNumberChanged?.Invoke(completedTask);
     }
 }
