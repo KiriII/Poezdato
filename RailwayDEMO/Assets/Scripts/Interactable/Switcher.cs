@@ -52,15 +52,18 @@ namespace interactableObj {
 
         private void OnTriggerEnter(Collider other)
         {
-            if (switcherState == TurnState.LEFT)
+            if (other.gameObject.GetComponent<WaypointsMovement>() != null)
             {
-                other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path1);
-            }
-            else
-            {
-                other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path2);
-            }
+                if (switcherState == TurnState.LEFT)
+                {
 
+                    other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path1);
+                }
+                else
+                {
+                    other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path2);
+                }
+            }
         }
     }	
 

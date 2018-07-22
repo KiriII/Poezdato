@@ -41,11 +41,9 @@ public class Goal  {
 
     public virtual void Complete()  // OnComplete actions
     {
-        Task.CheckGoals();
-        if (!Task.Completed)    // if there's more goals in the task -> activate next goal
-            Task.ActivateNextGoal();
-
         Completed = true;
+
+        Task.CheckGoals();        
         //Debug.Log("Goal marked as completed.");
     }
 }

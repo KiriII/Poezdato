@@ -13,14 +13,14 @@ public class TrainSetGoal : Goal {
 
     public TrainSetGoal(FullLineTask task, train.Types trainType, string description, bool completed, int currentAmount, int requiredAmount)
     {
-        this.Task = task;        
+        //this.Task = task;        
         this.workingLine = task.LineNumber;
         this.requiredTrainType = trainType;
         this.Description = description;
         this.Completed = completed;
         this.CurrentAmount = currentAmount;
         this.RequiredAmount = requiredAmount;
-
+        
         fullLineTask = task;        
     }
 
@@ -36,23 +36,24 @@ public class TrainSetGoal : Goal {
 	{
         Train arrivedTrain = arrivedCarriage.GetComponent<Train>();
         //Debug.Log("workingLine = " + workingLine + "\tCurrentLine = " + arrivedTrain.CurrentLine);
-		if (workingLine == arrivedTrain.CurrentLine)
-		{            
+        if (workingLine == arrivedTrain.CurrentLine)
+        {
             if (arrivedTrain.type == requiredTrainType)
-            {
-                fullLineTask.currentNumber++;
+            {                
                 this.CurrentAmount++;
+                Debug.Log(arrivedTrain.type.ToString() + " current = " + CurrentAmount + " req = " + RequiredAmount);
                 Evaluate();
             }
-		}
-        if (fullLineTask.currentNumber >= maxNumber)
-        {
-            if (CurrentAmount != RequiredAmount && !fullLineTask.failed)
+            //Debug.Log("Current n = " + fullLineTask.currentNumber + "max = " + fullLineTask.maxNumber);
+            if (fullLineTask.currentNumber >= fullLineTask.maxNumber)
             {
-                fullLineTask.failed = true;
-                EventHandler.LineTaskCompleted(fullLineTask);
-                //fullLineTask.Activating();
-                EventHandler.OnLineChanged -= CarriageCheck;
+                if (!fullLineTask.failed && !fullLineTask.Completed)
+                {
+                    Debug.Log("failed");
+                    fullLineTask.failed = true;
+                    EventHandler.LineTaskCompleted(fullLineTask);
+                    //EventHandler.OnLineChanged -= CarriageCheck;
+                }
             }
         }
 	}

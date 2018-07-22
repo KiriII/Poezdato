@@ -11,11 +11,12 @@ public class lokoPoint : MonoBehaviour {
     public List<int> ForUI;
     private CreatingSystem Cs;
     private bool sad;
-    [Range(1 , 5)]
+    //[HideInInspector]
     public int self;
 
     void Start()
     {
+        self = lineNumber;
         sad = false;
         Cs = FindObjectOfType<CreatingSystem>();
     }
