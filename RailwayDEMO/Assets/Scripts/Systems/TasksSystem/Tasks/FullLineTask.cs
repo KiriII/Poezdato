@@ -62,8 +62,7 @@ public class FullLineTask : MonoBehaviour {
     {
         requiredTypes.Clear();
         requiredNumber.Clear();
-        TaskLoader.Instance.LoadTaskInfo(LineNumber);
-        EventHandler.TaskNumberChanged(this);
+        TaskLoader.Instance.LoadTaskInfo(LineNumber);        
         Completed = false;
         currentNumber = 0;
         numCompleted = 4;
@@ -74,7 +73,7 @@ public class FullLineTask : MonoBehaviour {
         {
             if (v == 0) numCompleted--;
         }
-
+        //EventHandler.TaskNumberChanged(this);
     }
 
     public void Calc(GameObject arrivedCarriage)

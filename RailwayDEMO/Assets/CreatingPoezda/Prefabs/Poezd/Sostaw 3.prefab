@@ -5668,6 +5668,7 @@ MonoBehaviour:
   WagoniNeeded: 
   lokoPoint: 0
   speed: 0
+  isMoveing: 0
 --- !u!114 &114139157282816676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11731,9 +11732,9 @@ MonoBehaviour:
   withOutline: 0
   description: {fileID: 0}
   text: {fileID: 0}
-  descriptionText: Cargo carriage
+  descriptionText: "\u0413\u0440\u0443\u0437\u043E\u0432\u043E\u0439"
   isStopped: 0
-  Name: Cargo
+  Name: "\u0413\u0440\u0443\u0437\u043E\u0432\u043E\u0439"
   ID: 1
   type: 2
   MaxSpeed: 120

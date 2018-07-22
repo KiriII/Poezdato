@@ -9104,9 +9104,9 @@ MonoBehaviour:
   withOutline: 0
   description: {fileID: 0}
   text: {fileID: 0}
-  descriptionText: Passanger's train
+  descriptionText: "\u041F\u0430\u0441\u0441\u0430\u0436\u0438\u0440\u0441\u043A\u0438\u0439"
   isStopped: 0
-  Name: Passanger's train
+  Name: "\u041F\u0430\u0441\u0441\u0430\u0436\u0438\u0440\u0441\u043A\u0438\u0439"
   ID: 3
   type: 4
   MaxSpeed: 120
@@ -24053,6 +24053,7 @@ MonoBehaviour:
   WagoniNeeded: 
   lokoPoint: 0
   speed: 0
+  isMoveing: 0
 --- !u!114 &114930833916468998
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1983,9 +1983,9 @@ MonoBehaviour:
   withOutline: 0
   description: {fileID: 0}
   text: {fileID: 0}
-  descriptionText: Platform
+  descriptionText: "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430"
   isStopped: 0
-  Name: Platform
+  Name: "\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430"
   ID: 4
   type: 5
   MaxSpeed: 120
@@ -2009,6 +2009,7 @@ MonoBehaviour:
   WagoniNeeded: 
   lokoPoint: 0
   speed: 0
+  isMoveing: 0
 --- !u!114 &114461825689483640
 MonoBehaviour:
   m_ObjectHideFlags: 1

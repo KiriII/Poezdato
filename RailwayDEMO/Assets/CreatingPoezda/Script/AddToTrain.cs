@@ -48,7 +48,7 @@ public class AddToTrain : MonoBehaviour {
                     end = false;
                 } 
             }
-            if ("Линия " + loko.self == Cs.line.text) loko.ChangeExistWagoni();
+           // if ("Линия " + loko.self == Cs.line.text) loko.ChangeExistWagoni();
             /*
             if ((end) || (lokomotiw.Wagoni.Count == Cs.maxSize))
             {

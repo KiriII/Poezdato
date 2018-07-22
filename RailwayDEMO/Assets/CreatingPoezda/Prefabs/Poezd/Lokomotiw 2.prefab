@@ -8020,6 +8020,7 @@ MonoBehaviour:
   WagoniNeeded: 
   lokoPoint: 0
   speed: 0
+  isMoveing: 0
 --- !u!114 &114257538799008302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8034,9 +8035,9 @@ MonoBehaviour:
   withOutline: 0
   description: {fileID: 0}
   text: {fileID: 0}
-  descriptionText: Main train
+  descriptionText: "\u041B\u043E\u043A\u043E\u043C\u043E\u0442\u0438\u0432 "
   isStopped: 0
-  Name: Main train
+  Name: "\u041B\u043E\u043A\u043E\u043C\u043E\u0442\u0438\u0432 "
   ID: 0
   type: 1
   MaxSpeed: 120
