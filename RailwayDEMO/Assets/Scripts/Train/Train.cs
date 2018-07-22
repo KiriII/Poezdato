@@ -56,7 +56,7 @@ namespace train
         private void Start()
         {
             
-            lastSpeed = MaxSpeed * 2;
+            lastSpeed = MaxSpeed;
             state = new State(false, true, false, false); // train state init
             interComponent = GetComponent<DeleteWagon>();
             cS = FindObjectOfType<CreatingSystem>();

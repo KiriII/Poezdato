@@ -57,11 +57,11 @@ namespace interactableObj {
                 if (switcherState == TurnState.LEFT)
                 {
 
-                    other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path1);
+                    other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path2);
                 }
                 else
                 {
-                    other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path2);
+                    other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path1);
                 }
             }
         }

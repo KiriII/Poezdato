@@ -864,7 +864,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1605749772554390}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -298.62787, y: 42.53, z: 794.0996}
+  m_LocalPosition: {x: -456.64838, y: 36, z: 814.62103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4664542336864346}
@@ -1965,7 +1965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: []
   num: 0
-  minDist: 0.1
+  minDist: 0.15
   speed: 10
   go: 1
   isReady: 0
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   back: {fileID: 4219357950432830}
   WagoniNeeded: 
   lokoPoint: 0
-  speed: 50
+  speed: 0
 --- !u!114 &114461825689483640
 MonoBehaviour:
   m_ObjectHideFlags: 1

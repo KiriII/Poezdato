@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using train;
 
 public class WaypointsMovement : MonoBehaviour {
 
@@ -15,14 +16,22 @@ public class WaypointsMovement : MonoBehaviour {
     [HideInInspector]
     public bool isReady;
 
+
+    private const float SPEED_CONST = 0.75f;
+
 	// Use this for initialization
 	void Start () {
+        speed = GetComponent<Train>().CurrentSpeed;
         if (waypoints.Count != 0)
             isReady = true;
+
+        TrainHandler.OnSpeedChanged += ChangeSpeed;
 	}
 	
 	// Update is called once per frame
-	void Update () {    
+	void Update () {  
+        if (waypoints.Count != 0)
+        isReady = true;  
 
         if (go && isReady)
         {
@@ -38,13 +47,21 @@ public class WaypointsMovement : MonoBehaviour {
                     go = false;
             }
         }
-		
+		//if (!go)
+           // gameObject.transform.position += gameObject.transform.forward * speed * SPEED_CONST * Time.deltaTime;
+
 	}
+
+    public void ChangeSpeed(GameObject train)
+    {
+        if (train == gameObject)
+            speed = train.GetComponent<Train>().CurrentSpeed;
+    }
 
     public void Move()
     {
         gameObject.transform.LookAt(waypoints[num].transform.position);
-        gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
+        gameObject.transform.position += gameObject.transform.forward * speed * SPEED_CONST * Time.deltaTime;
     }
 
     public void AddWaypoints(List<GameObject> newPath)
