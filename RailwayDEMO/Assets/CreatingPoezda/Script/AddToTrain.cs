@@ -17,7 +17,8 @@ public class AddToTrain : MonoBehaviour {
         wait = false;
         Cs = FindObjectOfType<CreatingSystem>();
         it = this.gameObject.transform;
-        it.position = new Vector3(it.position.x - Cs.range/1.5f - Cs.width/2 , it.position.y , it.position.z);
+        //it.position = new Vector3(it.position.x - Cs.range/1.5f - Cs.width/2 , it.position.y , it.position.z);
+        transform.Translate(-Vector3.right*(Cs.range/1.5f + Cs.width/1.5f));
         //loko.ExistForUI = GetExistWagoni();
 
         EventHandler.OnFullLineCompleted += StartMovement;
@@ -34,7 +35,8 @@ public class AddToTrain : MonoBehaviour {
         {
             lokomotiw.Wagoni.Add(other.gameObject);
             lokomotiw.InitArrays();
-            it.position = new Vector3(it.position.x - Cs.range - Cs.width, it.position.y, it.position.z);
+            //it.position = new Vector3(it.position.x - Cs.range - Cs.width, it.position.y, it.position.z);
+            transform.Translate(-Vector3.right*(Cs.range + Cs.width));
             
             other.gameObject.GetComponent<Train>().SetSpeed(0);
             EventHandler.LineChanged(other.gameObject);
@@ -63,6 +65,7 @@ public class AddToTrain : MonoBehaviour {
     {        
         if (completedTask.LineNumber == lokomotiw.GetComponent<Train>().CurrentLine)
         {
+            lokomotiw.GetComponent<snake>().isMoveing = true;
             lokomotiw.GetComponent<Train>().SetSpeed( 50 );
             wait = true;
             if (completedTask.Completed)

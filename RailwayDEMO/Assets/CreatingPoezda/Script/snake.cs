@@ -28,6 +28,7 @@ public class snake : MonoBehaviour {
 
     public bool isMoveing;
 
+
 	// Use this for initialization
 	void Start () 
     {

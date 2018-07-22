@@ -10,6 +10,7 @@ public class MovementChange : MonoBehaviour {
 		{
 			Debug.Log("Movement change");
 			other.GetComponent<WaypointsMovement>().enabled = false;
+			//Destroy(this);
 			other.GetComponent<snake>().isMoveing = true;
 			other.GetComponent<train.Train>().SetSpeed(50);
 		}
