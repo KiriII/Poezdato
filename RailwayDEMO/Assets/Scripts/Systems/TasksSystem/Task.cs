@@ -18,6 +18,13 @@ public class Task : MonoBehaviour {
     {
         Goals = new List<Goal>();   // list init
         GoalIndex = 0;              // first goal index
+
+        AwakeMore();
+    }
+
+    public virtual void AwakeMore()
+    {
+
     }
 
     public void CheckGoals()        // completion check
@@ -46,11 +53,13 @@ public class Task : MonoBehaviour {
 
     public void ActivateAllGoals()
     {
+        Debug.Log("Activating " + Goals.Count + "goals");
         Goals.ForEach(g => g.Init());
     }
 
     public virtual void Done()  // OnComplete actions
-    {		
+    {
+        Debug.Log("Task comleted");
         EventHandler.TaskCompleted(this);	
         if (taskSystem) TaskSystem.Instance.CheckTasks();
 		

@@ -29,7 +29,7 @@ namespace train
         public string Info = "Some super interesting information";
         [HideInInspector]
         public float CurrentSpeed;
-        [HideInInspector]
+        //[HideInInspector]
         public int CurrentLine;
 
         private float lastSpeed;
@@ -56,7 +56,7 @@ namespace train
         private void Start()
         {
             
-            lastSpeed = MaxSpeed / 2;
+            lastSpeed = MaxSpeed * 2;
             state = new State(false, true, false, false); // train state init
             interComponent = GetComponent<DeleteWagon>();
             cS = FindObjectOfType<CreatingSystem>();

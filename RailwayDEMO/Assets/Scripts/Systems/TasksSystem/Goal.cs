@@ -26,6 +26,8 @@ public class Goal  {
     public virtual void Init()
     {
         Initialized = true;
+        CurrentAmount = 0;
+        Completed = false;
         // default initialize stuff
     }
 
@@ -44,6 +46,6 @@ public class Goal  {
             Task.ActivateNextGoal();
 
         Completed = true;
-        Debug.Log("Goal marked as completed.");
+        //Debug.Log("Goal marked as completed.");
     }
 }

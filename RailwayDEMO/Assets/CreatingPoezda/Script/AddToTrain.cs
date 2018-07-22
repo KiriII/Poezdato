@@ -9,6 +9,7 @@ public class AddToTrain : MonoBehaviour {
     public snake lokomotiw;
     public Transform it;
     bool wait;
+    public lokoPoint loko;
 
 
     // Use this for initialization
@@ -17,17 +18,27 @@ public class AddToTrain : MonoBehaviour {
         Cs = FindObjectOfType<CreatingSystem>();
         it = this.gameObject.transform;
         it.position = new Vector3(it.position.x - Cs.range/1.5f - Cs.width/2 , it.position.y , it.position.z);
-	}
+        //loko.ExistForUI = GetExistWagoni();
+
+        EventHandler.OnFullLineCompleted += StartMovement;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.OnFullLineCompleted -= StartMovement;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Jop");
         if ((other.tag == "Wagonchik") && (!wait))
         {
             lokomotiw.Wagoni.Add(other.gameObject);
             lokomotiw.InitArrays();
             it.position = new Vector3(it.position.x - Cs.range - Cs.width, it.position.y, it.position.z);
-            other.gameObject.GetComponent<snake>().speed = 0;
+            
+            other.gameObject.GetComponent<Train>().SetSpeed(0);
+            EventHandler.LineChanged(other.gameObject);
+            
             lokomotiw.WagoniNeeded[other.gameObject.GetComponent<Train>().ID - 1] -= 1;
             bool end = true;
             for (int i = 0; i < lokomotiw.WagoniNeeded.Count; i++)
@@ -37,12 +48,34 @@ public class AddToTrain : MonoBehaviour {
                     end = false;
                 } 
             }
+            loko.ChangeExistWagoni();
+            /*
             if ((end) || (lokomotiw.Wagoni.Count == Cs.maxSize))
             {
                 lokomotiw.GetComponent<snake>().speed = 50;
                 wait = true;
             }
+            */
         }
+    }
+
+    private void StartMovement(FullLineTask completedTask)
+    {        
+        if (completedTask.LineNumber == lokomotiw.GetComponent<Train>().CurrentLine)
+        {
+            lokomotiw.GetComponent<Train>().SetSpeed(50);
+            wait = true;
+            if (completedTask.Completed)
+            {
+                Debug.Log("PERFECT!!!");
+            }
+            else
+            {
+                Debug.Log("BAD!!!");
+            }
+            //completedTask.Activating();
+        }
+
     }
 
     private void Update()
@@ -56,5 +89,4 @@ public class AddToTrain : MonoBehaviour {
             }
         }
     }
-
 }

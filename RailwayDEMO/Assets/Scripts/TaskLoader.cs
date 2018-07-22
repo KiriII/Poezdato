@@ -73,7 +73,6 @@ public class TaskLoader : MonoBehaviour {
     public void LoadTaskInfo(int line)
     {
         Debug.Log("Start loading task info");
-        Debug.Log(tasks.Length);
         FullLineTask lineTask = tasks[line - 1];
         switch (line)
         {

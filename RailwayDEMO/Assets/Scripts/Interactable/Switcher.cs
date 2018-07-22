@@ -4,6 +4,10 @@ using UnityEngine;
 
 namespace interactableObj {
 	public class Switcher : Interactable {
+
+        public List<GameObject> path1;
+        public List<GameObject> path2;
+
 		private Animator anim;
 		[HideInInspector]
 		public TurnState switcherState;
@@ -45,7 +49,20 @@ namespace interactableObj {
 			anim.SetInteger("direction", 1);
 			switcherState = TurnState.RIGHT;
 		}
-	}	
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (switcherState == TurnState.LEFT)
+            {
+                other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path1);
+            }
+            else
+            {
+                other.gameObject.GetComponent<WaypointsMovement>().AddWaypoints(path2);
+            }
+
+        }
+    }	
 
 	public enum TurnState
 	{
