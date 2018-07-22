@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 114257538799008302}
   - component: {fileID: 114216032268170904}
   - component: {fileID: 114063658028569500}
+  - component: {fileID: 111366746449243948}
   m_Layer: 0
   m_Name: Lokomotiw 2
   m_TagString: Untagged
@@ -2951,6 +2952,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &111366746449243948
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996658398746362}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 294be7b082bc20440a7eb0ff6bc37b97, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114063658028569500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2967,6 +2982,7 @@ MonoBehaviour:
   minDist: 0.1
   speed: 10
   go: 1
+  isReady: 0
 --- !u!114 &114096881431066516
 MonoBehaviour:
   m_ObjectHideFlags: 1

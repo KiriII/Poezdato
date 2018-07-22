@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 114476949813166030}
   - component: {fileID: 114664714293210012}
   - component: {fileID: 114631265918844414}
+  - component: {fileID: 111476959274290038}
   m_Layer: 0
   m_Name: deTrain
   m_TagString: Untagged
@@ -242,6 +243,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.770332, y: 13.177721, z: 27.545813}
   m_Center: {x: -0.8145121, y: 2.6369345, z: -1.9238664}
+--- !u!111 &111476959274290038
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648512059544018}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 41aa3351af2157f4390da99e4c53bdea, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114476949813166030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +297,7 @@ MonoBehaviour:
   minDist: 0.1
   speed: 10
   go: 1
+  isReady: 0
 --- !u!114 &114664714293210012
 MonoBehaviour:
   m_ObjectHideFlags: 1
