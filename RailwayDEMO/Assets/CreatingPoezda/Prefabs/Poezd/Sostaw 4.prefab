@@ -1965,11 +1965,11 @@ MonoBehaviour:
   withOutline: 0
   description: {fileID: 0}
   text: {fileID: 0}
-  descriptionText: Cargo carriage
+  descriptionText: Platform
   isStopped: 0
-  Name: Cargo
-  ID: 1
-  type: 2
+  Name: Platform
+  ID: 4
+  type: 5
   MaxSpeed: 120
   destination: {fileID: 0}
   Info: Some super interesting information

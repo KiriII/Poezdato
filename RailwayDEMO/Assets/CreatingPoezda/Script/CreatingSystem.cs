@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using train;
 
 public class CreatingSystem : MonoBehaviour {
 
@@ -30,22 +31,25 @@ public class CreatingSystem : MonoBehaviour {
     public float range;
     public float width;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool isCreating;
 
     [HideInInspector]
     public int sostawCount;
+    [HideInInspector]
     private int lokomotCount;
     public Transform[] trainsStarts;
+    [HideInInspector]
     float time = 0;
 
     public GameObject[] NeedPlaces;
     public Text[] NeedTextes;
+    public Text line;
+    public Text startGoWagon;
 
     // Use this for initialization
     private void Awake() 
     {
-        
         int i = 0;
         while (sostawi[i] != null)
         {
@@ -166,6 +170,7 @@ public class CreatingSystem : MonoBehaviour {
         System.Random rnd = new System.Random();
         int current = rnd.Next(0, sostawCount);
         GameObject currentWagon = Instantiate(sostawi[current]);
+        startGoWagon.text = currentWagon.GetComponent<Train>().Name;
         currentWagon.transform.position = createPoint.transform.position;
     }
 
